@@ -60,7 +60,6 @@ def block(src, name):
 
 
 def convert(m):
-    rendered_tree = F.render_mission(m)
     group_id = "group_1"
     missions = []
     ids = {task.tid for task in m.tasks}
@@ -101,9 +100,15 @@ def convert(m):
             "chance": m.chance,
             "notes": m.desc,
             "blocks": {
-                name: block(rendered_tree, name)
-                for name in ("visible", "enabled", "select_trigger",
-                             "on_start", "on_completion", "on_abort")
+                name: value
+                for name, value in {
+                    "visible": m.visible,
+                    "enabled": m.enabled,
+                    "select_trigger": "",
+                    "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+                    "on_completion": "",
+                    "on_abort": "",
+                }.items()
             },
         },
         "groups": [{
