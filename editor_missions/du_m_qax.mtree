@@ -1,0 +1,357 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m_qax",
+    "name": "The Sound Toll",
+    "icon": "debt_and_loans",
+    "repeatable": false,
+    "player_playstyle": "diplomatic",
+    "chance": 5000,
+    "notes": "Helsingør is a small town at the narrowest point of the Sound, held as a vassal by the lord of Græsted-Gilleleje. Every ship between the Baltic and the North Sea must pass under our walls. A castle on the point and a toll on the water could make this little town the richest in the North.",
+    "blocks": {
+      "visible": "has_or_had_tag = QAX",
+      "enabled": "always = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "The Sound Toll",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m_qax_krogen",
+      "name": "The Castle on the Point",
+      "desc": "Build a castle on the sandy point where the Sound is narrowest. From its walls a cannon can reach Sweden.",
+      "icon": "mhr_forts_of_maharashtra",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:castle\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:castle\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_krogen\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:castle\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:castle owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_vaern",
+      "name": "Garrison of the Point",
+      "desc": "A castle with no men is a gift to the first enemy who sees it.",
+      "icon": "medieval_military",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_krogen"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_army_size >= 2\n\t\t\tsocietal_value:quality_vs_quantity < -28\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_army_size >= 2\n\tsocietal_value:quality_vs_quantity < -28\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_vaern\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tregular_army_size >= 2\n\t\t\t\t\t\tsocietal_value:quality_vs_quantity < -28\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_frihed",
+      "name": "Free of Gilleleje",
+      "desc": "The lord of Græsted-Gilleleje takes our taxes and gives nothing back. A town with a castle needs no master.",
+      "icon": "the_constitution",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_vaern"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tis_subject = no\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tis_subject = no\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_prestige = prestige_mild_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qax_frihed\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_tolden",
+      "name": "The Sound Toll",
+      "desc": "Every ship that passes must strike its sails and pay. Few will argue with the castle's guns.",
+      "icon": "debt_and_loans",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_krogen"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_navy_size >= 5\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_navy_size >= 5\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 1\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_tolden\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tregular_navy_size >= 5\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_toldkammer",
+      "name": "The Toll Chamber",
+      "desc": "The toll needs clerks, ledgers and an honest chamber to count it. Build one.",
+      "icon": "zmw_merchant_taxes",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_tolden"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tgold >= 150\n\t\t\tstability >= 30\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tgold >= 150\n\tstability >= 30\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_toldkammer\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_skibe",
+      "name": "Ships of the Sound",
+      "desc": "A toll is collected by the guns and enforced by the ships. Build a squadron.",
+      "icon": "baltic_shipyard",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_tolden"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:dock\n\t\t\t}\n\t\t\tregular_navy_size >= 10\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:dock\n\t}\n\tregular_navy_size >= 10\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_skibe\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:dock\n\t\t\t\t\t\t}\n\t\t\t\t\t\tregular_navy_size >= 10\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:dock owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_kul",
+      "name": "Coal of Hellebæk",
+      "desc": "There is coal in the hills behind Hellebæk. Our smiths could use it.",
+      "icon": "coke_smelting",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\traw_material ?= goods:coal\n\t\t\t\trgo_level >= 2\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\traw_material ?= goods:coal\n\t\trgo_level >= 2\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_kul\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\traw_material ?= goods:coal\n\t\t\t\t\t\t\trgo_level >= 2\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { raw_material ?= goods:coal }\n\t\t\t\torder_by = rgo_level\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_rgo_upgrade = { cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_smedjer",
+      "name": "The Smiths of Hellebæk",
+      "desc": "With coal and a stream to turn the hammers, Hellebæk could forge iron for the whole Sound.",
+      "icon": "standardisation_of_calibre",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_kul"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:local_smelters\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t\tlocation:hellebaek_7442 = {\n\t\t\t\towner ?= root\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:local_smelters\n\t\tcount >= 1\n\t}\n\tlocation:hellebaek_7442 = {\n\t\towner ?= root\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "location:hellebaek_7442 = {\n\tif = {\n\t\tlimit = { owner ?= root }\n\t\tadd_location_modifier = {\n\t\t\tmodifier = du_mm_qax_smedjer\n\t\t\tmode = replace\n\t\t\tyears = -1\n\t\t}\n\t}\n}\nadd_country_modifier = {\n\tmodifier = du_mm_qax_smedjer_1\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:local_smelters\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t\tlocation:hellebaek_7442 = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement raw_material = goods:iron NOT = { has_building = building_type:local_smelters } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:local_smelters owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_krav",
+      "name": "Settle with Gilleleje",
+      "desc": "Our former lord still holds the coast to the west. Gilleleje and Græsted should pay their debts to us now.",
+      "icon": "expansionism",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_frihed"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_army_size >= 3\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_army_size >= 3\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "set_variable = du_mission_krav\nlocation:blistrup_7392 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\nlocation:gilleleje_7431 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qax_1 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_gilleleje",
+      "name": "The North Coast",
+      "desc": "Take Blistrup and Gilleleje, and the whole north coast of Zealand is ours.",
+      "icon": "generic_conquer_province",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_krav"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:blistrup_7392\n\t\t\towns = location:gilleleje_7431\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qax_1 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:blistrup_7392\n\towns = location:gilleleje_7431\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_prestige = prestige_mild_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qax_gilleleje\n\tmode = replace\n\tyears = -1\n}\nset_variable = du_mission_krav\nlocation:asminderoed_7444 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qax_2 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_fredensborg",
+      "name": "Fredensborg",
+      "desc": "Asminderød and the lake country behind it belong to Copenhagen's suburbs. They would be safer under our castle.",
+      "icon": "offensive_army",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_gilleleje"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:asminderoed_7444\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qax_2 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:asminderoed_7444\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qax_fredensborg\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qax_sundtolden",
+      "name": "Keepers of the Sound",
+      "desc": "Castle, toll, ships and a free town: every captain from Danzig to Amsterdam knows the name of Helsingør.",
+      "icon": "dan_rulers_of_the_north",
+      "group": "group_1",
+      "requires": [
+        "du_m_qax_toldkammer",
+        "du_m_qax_skibe",
+        "du_m_qax_smedjer",
+        "du_m_qax_fredensborg"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t}\n\t\t\tstability >= 40\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t}\n\tstability >= 40\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 2 }\n\tset_country_rank_effect = { rank = country_rank:rank_duchy }\n}\nadd_prestige = prestige_severe_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qax_sundtolden_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tstability >= 40\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { NOT = { location_rank = location_rank:rural_settlement } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:town }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

@@ -1,0 +1,354 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m_qbg",
+    "name": "City of the Bishops",
+    "icon": "religious_unification",
+    "repeatable": false,
+    "player_playstyle": "administrative",
+    "chance": 5000,
+    "notes": "Roskilde was the royal seat before Copenhagen was more than a fishing village. The kings lie buried in our cathedral and the bishop still lives here. A learned, free and humanist town, it means to be Zealand's mind if Copenhagen is its purse.",
+    "blocks": {
+      "visible": "has_or_had_tag = QBG",
+      "enabled": "always = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "City of the Bishops",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m_qbg_gravkirken",
+      "name": "Burial Church of the Kings",
+      "desc": "The kings of Denmark lie in our cathedral. Every new king must come to bury the old one. Make him welcome.",
+      "icon": "divine_church_music",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:temple\n\t\t\t}\n\t\t\tprestige >= 25\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:temple\n\t}\n\tprestige >= 25\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_gravkirken\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:temple\n\t\t\t\t\t\t}\n\t\t\t\t\t\tprestige >= 25\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:temple owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_bispen",
+      "name": "The Bishop's Court",
+      "desc": "The bishop of Roskilde owns half of Zealand. His court should be our court, and his clerks our clerks.",
+      "icon": "reform_the_ecclesiastical_authorities",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_gravkirken"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_estate = {\n\t\t\t\testate_type = estate_type:clergy_estate\n\t\t\t\tpower >= 0.3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_estate = {\n\t\testate_type = estate_type:clergy_estate\n\t\tpower >= 0.3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_bispen\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_skolen",
+      "name": "The Cathedral School",
+      "desc": "Roskilde's cathedral school is the oldest in the realm. Its scholars should serve the town, not only the Church.",
+      "icon": "library_advance",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_bispen"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:library\n\t\t\t}\n\t\t\tsocietal_value:spiritualist_vs_humanist > 58\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:library\n\t}\n\tsocietal_value:spiritualist_vs_humanist > 58\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_skolen\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsocietal_value:spiritualist_vs_humanist > 58\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_right }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_laerde",
+      "name": "A Learned Town",
+      "desc": "Copenhagen has the merchants. Roskilde will have the scholars.",
+      "icon": "renaissance_thought",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_skolen"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:library\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t\tsocietal_value:traditionalist_vs_innovative > 52\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:library\n\t\tcount >= 2\n\t}\n\tsocietal_value:traditionalist_vs_innovative > 52\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_laerde\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsocietal_value:traditionalist_vs_innovative > 52\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:library } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tchange_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_right }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_fjorden",
+      "name": "Roskilde Fjord",
+      "desc": "The long fjord runs from our harbour to the Kattegat. Its villages fish and its ships trade.",
+      "icon": "nav_transatlantic_whaling",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:fishing_village\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:wharf\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:fishing_village\n\t\tcount >= 3\n\t}\n\tcapital = {\n\t\thas_building = building_type:wharf\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_fjorden\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:fishing_village\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:wharf\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement is_coastal = yes NOT = { has_building = building_type:fishing_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_building = { building_type = building_type:fishing_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:wharf owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_marked",
+      "name": "Market of Zealand",
+      "desc": "Every road on Zealand once led to Roskilde. Make the market worthy of the roads.",
+      "icon": "generic_trade",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_fjorden"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:market_village\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:market_village\n\t\tcount >= 2\n\t}\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 1\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_marked\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:market_village\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:market_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:market_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_borgerne",
+      "name": "Free Citizens of Roskilde",
+      "desc": "The bishop rules the land; the citizens rule the town. Write it into the charter.",
+      "icon": "liberty_egalite_fraternity",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_marked"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:serfdom_vs_free_subjects > 60\n\t\t\tany_estate = {\n\t\t\t\testate_type = estate_type:burghers_estate\n\t\t\t\tpower >= 0.25\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:serfdom_vs_free_subjects > 60\n\tany_estate = {\n\t\testate_type = estate_type:burghers_estate\n\t\tpower >= 0.25\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_borgerne\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:serfdom_vs_free_subjects > 60\n\t\t\t\t\t\tany_estate = {\n\t\t\t\t\t\t\testate_type = estate_type:burghers_estate\n\t\t\t\t\t\t\tpower >= 0.25\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_vasaller",
+      "name": "Lords of the Fjord",
+      "desc": "Lejre, Halsnæs, Frederikssund and Skibby hold their land of us. Their loyalty is the fjord's defence.",
+      "icon": "generic_vassal_ties",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tnum_subjects >= 4\n\t\t\tsocietal_value:quality_vs_quantity < -42\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tnum_subjects >= 4\n\tsocietal_value:quality_vs_quantity < -42\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_vasaller\n\tmode = replace\n\tyears = -1\n}\nset_variable = du_mission_krav\nlocation:oelstykke_7409 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\nlocation:stenloese_7410 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qbg_1 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tnum_subjects >= 4\n\t\t\t\t\t\tsocietal_value:quality_vs_quantity < -42\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = quality_vs_quantity value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_egedal",
+      "name": "Egedal",
+      "desc": "Ølstykke and Stenløse lie between our fjord and Copenhagen's suburbs. Better ours than theirs.",
+      "icon": "generic_conquer_province",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_vasaller"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:oelstykke_7409\n\t\t\towns = location:stenloese_7410\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qbg_1 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:oelstykke_7409\n\towns = location:stenloese_7410\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_prestige = prestige_mild_bonus\nset_variable = du_mission_krav\nlocation:bjaeverskov_7537 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qbg_2 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_skovbo",
+      "name": "South to Skovbo",
+      "desc": "Skovbo is Ringsted's vassal and our road to Køge. Take it.",
+      "icon": "offensive_army",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_egedal"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:bjaeverskov_7537\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qbg_2 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:bjaeverskov_7537\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_skovbo\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_raadet",
+      "name": "Counsel to the Crown",
+      "desc": "Copenhagen has the crown, but it needs counsel. The bishop and the scholars of Roskilde can give it.",
+      "icon": "sme_proactive_diplomacy",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_laerde"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:belligerent_vs_conciliatory > 30\n\t\t\tprestige >= 40\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:belligerent_vs_conciliatory > 30\n\tprestige >= 40\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qbg_raadet\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:belligerent_vs_conciliatory > 30\n\t\t\t\t\t\tprestige >= 40\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_right }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qbg_bispernes_by",
+      "name": "City of the Bishops",
+      "desc": "Kings in the crypt, scholars in the school and free citizens in the streets: Roskilde is Zealand's mind.",
+      "icon": "religious_unification",
+      "group": "group_1",
+      "requires": [
+        "du_m_qbg_raadet",
+        "du_m_qbg_borgerne",
+        "du_m_qbg_skovbo"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tdevelopment >= 18\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t}\n\tcapital = {\n\t\tdevelopment >= 18\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 2 }\n\tset_country_rank_effect = { rank = country_rank:rank_duchy }\n}\nadd_prestige = prestige_mild_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qbg_bispernes_by_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tdevelopment >= 18\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { OR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:city }\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tchange_development = 5\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

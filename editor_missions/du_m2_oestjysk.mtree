@@ -1,0 +1,220 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m2_oestjysk",
+    "name": "Forests and Manors",
+    "icon": "river_trade",
+    "repeatable": false,
+    "player_playstyle": "administrative",
+    "chance": 4000,
+    "notes": "East Jutland has the beech forests of the lake highlands and the great manors of Djursland. In the new age, timber and grain flow down the Gudenå to the sea, and the manor lords grow rich on both.",
+    "blocks": {
+      "visible": "culture ?= { has_culture_group = culture_group:oestjysk_group }\ndu_mission_unik_age2_trigger = no\ndu_mission_spillerland_trigger = yes",
+      "enabled": "du_mission_age2_trigger = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Forests and Manors",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m2_oestjysk_skove",
+      "name": "Forests of the Highlands",
+      "desc": "Beech and oak cover the hills from Silkeborg to Skanderborg.",
+      "icon": "lumber_improvements_discovery",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_oestjysk_2_soehoejlandets_skove\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:sawmill\n\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_oestjysk_2_soehoejlandets_skove\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:sawmill\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_skove\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\thas_advance = dku_oestjysk_2_soehoejlandets_skove\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:sawmill\n\t\t\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement OR = { vegetation = woods vegetation = forest vegetation = farmland raw_material = goods:lumber } NOT = { has_building = building_type:sawmill } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:sawmill owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_oestjysk_herregaarde",
+      "name": "Manors of Djursland",
+      "desc": "The lords of Djursland build their manors in brick now.",
+      "icon": "noble_resilience",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_oestjysk_2_djurslands_herregaarde\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:noble_villa\n\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_oestjysk_2_djurslands_herregaarde\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:noble_villa\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_herregaarde\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\thas_advance = dku_oestjysk_2_djurslands_herregaarde\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:noble_villa\n\t\t\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:noble_villa } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:noble_villa owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_oestjysk_gudenaa",
+      "name": "Down the Gudenå",
+      "desc": "Barges carry our timber and grain to Randers.",
+      "icon": "river_trade",
+      "group": "group_1",
+      "requires": [
+        "du_m2_oestjysk_skove"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:market_village\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:market_village\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_gudenaa\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:market_village\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:market_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:market_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_oestjysk_korn",
+      "name": "Grain of the Manors",
+      "desc": "The manors grow grain for sale, not only for bread.",
+      "icon": "african_sturdy_grains_advance",
+      "group": "group_1",
+      "requires": [
+        "du_m2_oestjysk_herregaarde"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:farming_village\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:farming_village\n\t\tcount >= 3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_korn\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:farming_village\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement OR = { raw_material = goods:wheat raw_material = goods:millet raw_material = goods:legumes } NOT = { has_building = building_type:farming_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_building = { building_type = building_type:farming_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_oestjysk_rytteri",
+      "name": "East Jutland Horse",
+      "desc": "The manor lords ride well. Let them ride for us.",
+      "icon": "bur_knightly_prowess",
+      "group": "group_1",
+      "requires": [
+        "du_m2_oestjysk_korn"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_army_size >= 4\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:training_fields\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_army_size >= 4\n\tany_owned_location = {\n\t\thas_building = building_type:training_fields\n\t\tcount >= 1\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_rytteri\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tregular_army_size >= 4\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:training_fields\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:training_fields } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:training_fields owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_oestjysk_moeller",
+      "name": "Mills on the River",
+      "desc": "Every stream that feeds the Gudenå can turn a mill.",
+      "icon": "netherlandish_protoindustry",
+      "group": "group_1",
+      "requires": [
+        "du_m2_oestjysk_gudenaa"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:windmill\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:windmill\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_moeller\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:windmill\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement OR = { raw_material = goods:wheat raw_material = goods:millet } NOT = { has_building = building_type:windmill } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:windmill owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_oestjysk_oestjylland",
+      "name": "Rich East Jutland",
+      "desc": "Forest, manor, river and mill: East Jutland prospers.",
+      "icon": "cultural_ties_culture",
+      "group": "group_1",
+      "requires": [
+        "du_m2_oestjysk_rytteri",
+        "du_m2_oestjysk_moeller"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tstability >= 35\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tstability >= 35\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_oestjysk_oestjylland_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

@@ -1,0 +1,219 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m2_qbt",
+    "name": "Duchy of the South",
+    "icon": "lub_hanseatic_coins",
+    "repeatable": false,
+    "player_playstyle": "diplomatic",
+    "chance": 6000,
+    "notes": "Næstved's merchants, monks and farmers have made the town the centre of South Zealand. In the new age, with Vordingborg's castle and Falster across the water, it could rule a duchy of the south.",
+    "blocks": {
+      "visible": "has_or_had_tag = QBT",
+      "enabled": "du_mission_age2_trigger = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Duchy of the South",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m2_qbt_esrum",
+      "name": "Monastic Farming",
+      "desc": "The monks of Skovkloster farm better than anyone.",
+      "icon": "cradle_of_monasticism",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_sjaellandsk_2_esrum_klosters_landbrug\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:farming_village\n\t\t\t\t\t\tcount >= 4\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_sjaellandsk_2_esrum_klosters_landbrug\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:farming_village\n\t\t\t\tcount >= 4\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbt_esrum\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\thas_advance = dku_sjaellandsk_2_esrum_klosters_landbrug\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:farming_village\n\t\t\t\t\t\t\t\t\tcount >= 4\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement OR = { raw_material = goods:wheat raw_material = goods:millet raw_material = goods:legumes } NOT = { has_building = building_type:farming_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 4\n\t\t\t\tconstruct_building = { building_type = building_type:farming_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbt_krongods",
+      "name": "Crown and Town",
+      "desc": "The crown has lands near us; be a good neighbour.",
+      "icon": "generic_vassal_ties",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_sjaellandsk_2_krongodset_i_nordsjaelland\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tprestige >= 40\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_sjaellandsk_2_krongodset_i_nordsjaelland\n\t\t}\n\t\tAND = {\n\t\t\tprestige >= 40\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbt_krongods\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbt_hansa",
+      "name": "Hanseatic Kontor",
+      "desc": "The Lübeck merchants open a kontor in Næstved.",
+      "icon": "lub_hanseatic_coins",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t\tregular_navy_size >= 6\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 3\n\t}\n\tregular_navy_size >= 6\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbt_hansa\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t\tregular_navy_size >= 6\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbt_herlufsholm",
+      "name": "The Noble School",
+      "desc": "Turn the old monastery into a school for the sons of the nobility.",
+      "icon": "prestigious_schools",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbt_esrum"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:library\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t\tany_estate = {\n\t\t\t\testate_type = estate_type:nobles_estate\n\t\t\t\tpower >= 0.3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:library\n\t\tcount >= 2\n\t}\n\tany_estate = {\n\t\testate_type = estate_type:nobles_estate\n\t\tpower >= 0.3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbt_herlufsholm\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_estate = {\n\t\t\t\t\t\t\testate_type = estate_type:nobles_estate\n\t\t\t\t\t\t\tpower >= 0.3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:library } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbt_kalundborg",
+      "name": "The Western Lordship",
+      "desc": "Kalundborg and its lands are part of our realm in law and in fact.",
+      "icon": "generic_vassal_ties",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbt_krongods"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tarea:kalundborg_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.6\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tnum_subjects >= 3\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\tarea:kalundborg_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.6\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tnum_subjects >= 3\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbt_kalundborg\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbt_syd",
+      "name": "Vordingborg and Faxe",
+      "desc": "The castle of Vordingborg and the lands of Faxe complete the south.",
+      "icon": "expansionism",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbt_hansa",
+        "du_m2_qbt_kalundborg"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tarea:vordingborg_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.6\n\t\t\t\t}\n\t\t\t}\n\t\t\tarea:faxe_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.6\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tarea:vordingborg_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.6\n\t\t}\n\t}\n\tarea:faxe_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.6\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbt_syd\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbt_soendersyssel",
+      "name": "Duchy of the South",
+      "desc": "South Zealand and its islands answer to Næstved.",
+      "icon": "cultural_ties_culture",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbt_herlufsholm",
+        "du_m2_qbt_syd"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_or_had_tag = QZR\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:naestved_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:vordingborg_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:faxe_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:stevns_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_or_had_tag = QZR\n\t\t}\n\t\tAND = {\n\t\t\tarea:naestved_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:vordingborg_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:faxe_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:stevns_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 2 }\n\tset_country_rank_effect = { rank = country_rank:rank_duchy }\n}\nadd_country_modifier = {\n\tmodifier = du_mm_a2_qbt_soendersyssel_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

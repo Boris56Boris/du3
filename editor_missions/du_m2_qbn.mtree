@@ -1,0 +1,219 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m2_qbn",
+    "name": "Where Zealand Hails Its King",
+    "icon": "pal_a_just_ruler",
+    "repeatable": false,
+    "player_playstyle": "administrative",
+    "chance": 6000,
+    "notes": "The kings of Denmark are hailed at the Landsting of Ringsted and buried in its church. In the new age, as the crown grows strong, Ringsted could make itself the indispensable seat of Zealand's law.",
+    "blocks": {
+      "visible": "has_or_had_tag = QBN",
+      "enabled": "du_mission_age2_trigger = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Where Zealand Hails Its King",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m2_qbn_esrum",
+      "name": "Farming of the Monks",
+      "desc": "Learn from the monks how to farm.",
+      "icon": "cradle_of_monasticism",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_sjaellandsk_2_esrum_klosters_landbrug\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:farming_village\n\t\t\t\t\t\tcount >= 5\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_sjaellandsk_2_esrum_klosters_landbrug\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:farming_village\n\t\t\t\tcount >= 5\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbn_esrum\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\thas_advance = dku_sjaellandsk_2_esrum_klosters_landbrug\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:farming_village\n\t\t\t\t\t\t\t\t\tcount >= 5\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement OR = { raw_material = goods:wheat raw_material = goods:millet raw_material = goods:legumes } NOT = { has_building = building_type:farming_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 5\n\t\t\t\tconstruct_building = { building_type = building_type:farming_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbn_krongods",
+      "name": "Friends of the Crown",
+      "desc": "The crown's lands are all around us. Serve them well.",
+      "icon": "generic_vassal_ties",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_sjaellandsk_2_krongodset_i_nordsjaelland\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_estate = {\n\t\t\t\t\t\testate_type = estate_type:crown_estate\n\t\t\t\t\t\tpower >= 0.3\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_sjaellandsk_2_krongodset_i_nordsjaelland\n\t\t}\n\t\tAND = {\n\t\t\tany_estate = {\n\t\t\t\testate_type = estate_type:crown_estate\n\t\t\t\tpower >= 0.3\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbn_krongods\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbn_hylding",
+      "name": "The Hailing of Kings",
+      "desc": "The new king comes to Ringsted to be hailed.",
+      "icon": "dan_rulers_of_the_north",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbn_krongods"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tprestige >= 60\n\t\t\tstability >= 45\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tprestige >= 60\n\tstability >= 45\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbn_hylding\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbn_kornhandel",
+      "name": "Grain Trade",
+      "desc": "Ship our grain from Køge.",
+      "icon": "export_building_country_advance",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbn_esrum"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:granary\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\tarea:koege_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.6\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:granary\n\t\tcount >= 2\n\t}\n\tOR = {\n\t\tAND = {\n\t\t\tarea:koege_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.6\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbn_kornhandel\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:granary\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tarea:koege_area = {\n\t\t\t\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\t\t\t\tpercent >= 0.6\n\t\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:granary } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:granary owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbn_soroe",
+      "name": "Sorø and the Lakes",
+      "desc": "The lakes around Sorø belong with the heart of Zealand.",
+      "icon": "expansionism",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tarea:soroe_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.6\n\t\t\t\t}\n\t\t\t}\n\t\t\tarea:ringsted_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 1.0\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tarea:soroe_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.6\n\t\t}\n\t}\n\tarea:ringsted_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 1.0\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbn_soroe\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbn_loven",
+      "name": "The Law of Zealand",
+      "desc": "Zealand's law is kept at Ringsted.",
+      "icon": "eltham_ordinance",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbn_hylding",
+        "du_m2_qbn_soroe"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:library\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t\tsocietal_value:centralization_vs_decentralization < -15\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:library\n\t\tcount >= 1\n\t}\n\tsocietal_value:centralization_vs_decentralization < -15\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qbn_loven\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsocietal_value:centralization_vs_decentralization < -15\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:library } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tchange_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qbn_hylder",
+      "name": "Where Zealand Hails Its King",
+      "desc": "No king rules Zealand who has not come to Ringsted.",
+      "icon": "pal_a_just_ruler",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qbn_kornhandel",
+        "du_m2_qbn_loven"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t}\n\t\t\tnum_locations >= 100\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t}\n\tnum_locations >= 100\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 3 }\n\tset_country_rank_effect = { rank = country_rank:rank_kingdom }\n}\nadd_country_modifier = {\n\tmodifier = du_mm_a2_qbn_hylder_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tnum_locations >= 100\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { OR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:city }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

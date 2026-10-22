@@ -1,0 +1,353 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m_qcv",
+    "name": "Heirs of Jelling",
+    "icon": "pal_a_just_ruler",
+    "repeatable": false,
+    "player_playstyle": "military",
+    "chance": 5000,
+    "notes": "The mounds and runestones of Jelling stand on our land: here Gorm and Harald made Denmark. Vejle is a fjord town of farmers and furriers, proud of the old ways and eager for the fight. Kolding and Hedensted stand between us and the greatness our ancestors knew.",
+    "blocks": {
+      "visible": "has_or_had_tag = QCV",
+      "enabled": "always = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Heirs of Jelling",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m_qcv_jelling",
+      "name": "The Stones of Jelling",
+      "desc": "Harald's stone says he won all Denmark and made the Danes Christian. Raise a church beside it worthy of the words.",
+      "icon": "epic_poetry_advance",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tlocation:jelling_7905 = {\n\t\t\t\towner ?= root\n\t\t\t\thas_building = building_type:parish_church\n\t\t\t}\n\t\t\tsocietal_value:traditionalist_vs_innovative < 0\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tlocation:jelling_7905 = {\n\t\towner ?= root\n\t\thas_building = building_type:parish_church\n\t}\n\tsocietal_value:traditionalist_vs_innovative < 0\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_jelling\n\tmode = replace\n\tyears = -1\n}\nlocation:jelling_7905 = {\n\tif = {\n\t\tlimit = { owner ?= root }\n\t\tadd_location_modifier = {\n\t\t\tmodifier = du_mm_qcv_jelling_1\n\t\t\tmode = replace\n\t\t\tyears = -1\n\t\t}\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tlocation:jelling_7905 = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t\thas_building = building_type:parish_church\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsocietal_value:traditionalist_vs_innovative < 0\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tlocation:jelling_7905 = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:parish_church owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = traditionalist_vs_innovative value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_kongehal",
+      "name": "The King's Hall",
+      "desc": "Where Gorm feasted, our lords will feast. Rebuild the hall, and every lord of the realm will want a seat at its table.",
+      "icon": "grand_banquets",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_jelling"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tprestige >= 30\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:noble_villa\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tprestige >= 30\n\tany_owned_location = {\n\t\thas_building = building_type:noble_villa\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_kongehal\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tprestige >= 30\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:noble_villa\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:noble_villa } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:noble_villa owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_fjorden",
+      "name": "The Vejle Fjord",
+      "desc": "The fjord is narrow and deep. A harbour at its head is safe from any storm and any raider.",
+      "icon": "port_cost_distance_from_capital_choice_mil",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:dock\n\t\t\t}\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:fishing_village\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:dock\n\t}\n\tany_owned_location = {\n\t\thas_building = building_type:fishing_village\n\t\tcount >= 3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_fjorden\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:dock\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:fishing_village\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:dock owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement is_coastal = yes NOT = { has_building = building_type:fishing_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_building = { building_type = building_type:fishing_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_pelse",
+      "name": "Furs of the Valleys",
+      "desc": "Fox, marten and otter run in the valleys behind the town. Our furriers sell them in Lübeck.",
+      "icon": "there_shall_be_no_grass",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\traw_material ?= goods:fur\n\t\t\t\trgo_level >= 2\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\traw_material ?= goods:fur\n\t\trgo_level >= 2\n\t\tcount >= 3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_pelse\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\traw_material ?= goods:fur\n\t\t\t\t\t\t\trgo_level >= 2\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { raw_material ?= goods:fur }\n\t\t\t\torder_by = rgo_level\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_rgo_upgrade = { cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_traditionen",
+      "name": "The Old Ways",
+      "desc": "Our farmers grow what they eat and sell what they must. That is how it was in Gorm's day, and it served him well.",
+      "icon": "generic_traditional_economy",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_pelse"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:capital_economy_vs_traditional_economy > 40\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:farming_village\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:capital_economy_vs_traditional_economy > 40\n\tany_owned_location = {\n\t\thas_building = building_type:farming_village\n\t\tcount >= 3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_traditionen\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:capital_economy_vs_traditional_economy > 40\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:farming_village\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = capital_economy_vs_traditional_economy value = societal_value_move_to_right }\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement OR = { raw_material = goods:wheat raw_material = goods:millet raw_material = goods:legumes } NOT = { has_building = building_type:farming_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_building = { building_type = building_type:farming_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_vasaller",
+      "name": "Lords of the Valleys",
+      "desc": "Give, Billund and Tørring-Uldum hold their land of us. Their men should ride with ours.",
+      "icon": "generic_vassal_ties",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tnum_subjects >= 3\n\t\t\tregular_army_size >= 4\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tnum_subjects >= 3\n\tregular_army_size >= 4\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_vasaller\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_haer",
+      "name": "The Host of Vejle",
+      "desc": "Our grandfathers fought for Gorm. Our sons must be ready to fight for us.",
+      "icon": "dan_levy_recruitment",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_vasaller"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_army_size >= 6\n\t\t\tsocietal_value:offensive_vs_defensive < -40\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_army_size >= 6\n\tsocietal_value:offensive_vs_defensive < -40\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_haer\n\tmode = replace\n\tyears = -1\n}\nset_variable = du_mission_krav\nlocation:hedensted_7971 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qcv_1 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tregular_army_size >= 6\n\t\t\t\t\t\tsocietal_value:offensive_vs_defensive < -40\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = offensive_vs_defensive value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_hedensted",
+      "name": "North to Hedensted",
+      "desc": "Hedensted holds the road to Horsens and the coast to Juelsminde. Take it.",
+      "icon": "generic_conquer_province",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_haer"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:hedensted_7971\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qcv_1 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:hedensted_7971\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_prestige = prestige_mild_bonus\nset_variable = du_mission_krav\nlocation:trinitatis_7909 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\nlocation:sankt_nicolai_7927 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qcv_2 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_trekanten",
+      "name": "The Triangle",
+      "desc": "Fredericia and Kolding guard the Little Belt. With them, every road between Jutland and Funen runs through Vejle.",
+      "icon": "offensive_army",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_hedensted"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:trinitatis_7909\n\t\t\towns = location:sankt_nicolai_7927\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qcv_2 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:trinitatis_7909\n\towns = location:sankt_nicolai_7927\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_trekanten\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_marked",
+      "name": "Market of Vejle",
+      "desc": "Farmers from three valleys bring their beasts to our market. Give them a proper one.",
+      "icon": "generic_trade",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_fjorden",
+        "du_m_qcv_traditionen"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:market_village\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:market_village\n\t\tcount >= 2\n\t}\n\tcapital = {\n\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_marked\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:market_village\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:market_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:market_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { NOT = { location_rank = location_rank:rural_settlement } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:town }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_kirken",
+      "name": "Saint Nicholas Church",
+      "desc": "The church of Saint Nicholas watches over the fjord and its sailors. Let it be rebuilt in stone and brick.",
+      "icon": "national_churches",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_kongehal"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:temple\n\t\t\t}\n\t\t\tsocietal_value:spiritualist_vs_humanist < 5\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:temple\n\t}\n\tsocietal_value:spiritualist_vs_humanist < 5\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qcv_kirken\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:temple\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsocietal_value:spiritualist_vs_humanist < 5\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:temple owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qcv_arvinger",
+      "name": "Heirs of Jelling",
+      "desc": "Gorm made a kingdom from this valley. With the Triangle in our hands and the old ways kept, his heirs could do it again.",
+      "icon": "dan_rulers_of_the_north",
+      "group": "group_1",
+      "requires": [
+        "du_m_qcv_trekanten",
+        "du_m_qcv_marked",
+        "du_m_qcv_kirken"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tnum_locations >= 90\n\t\t\tarmy_tradition >= 20\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tnum_locations >= 90\n\tarmy_tradition >= 20\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 2 }\n\tset_country_rank_effect = { rank = country_rank:rank_duchy }\n}\nadd_prestige = prestige_severe_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qcv_arvinger_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

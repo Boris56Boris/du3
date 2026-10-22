@@ -1,0 +1,356 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m_qdx",
+    "name": "Gate of the Limfjord",
+    "icon": "river_trade",
+    "repeatable": false,
+    "player_playstyle": "diplomatic",
+    "chance": 5000,
+    "notes": "Aalborg holds the narrows where the Limfjord meets the Kattegat. Herring, grain and fur all pass our quays, and the districts of the federation look to us. The lands across the fjord could look to us as well.",
+    "blocks": {
+      "visible": "has_or_had_tag = QDX",
+      "enabled": "always = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Gate of the Limfjord",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m_qdx_limfjordssild",
+      "name": "Limfjord Herring",
+      "desc": "The fjord is silver every autumn. Every village with a boat should have a share in it.",
+      "icon": "nav_transatlantic_whaling",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:fishing_village\n\t\t\t\tcount >= 4\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:fishing_village\n\t\tcount >= 4\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_limfjordssild\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:fishing_village\n\t\t\t\t\t\t\tcount >= 4\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement is_coastal = yes NOT = { has_building = building_type:fishing_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 4\n\t\t\t\tconstruct_building = { building_type = building_type:fishing_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_salteri",
+      "name": "Salt for the Barrels",
+      "desc": "Fresh herring rots in a week; salted herring sails to Lübeck. Build the salteries.",
+      "icon": "dan_trading_economy",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_limfjordssild"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:du_saltery\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:du_saltery\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_salteri\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:du_saltery\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:du_saltery } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:du_saltery owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_noerresundby",
+      "name": "The Sound at Nørresundby",
+      "desc": "The ferry at Nørresundby is the only road north. A market town on the far bank makes it ours.",
+      "icon": "generic_infrastructure",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_limfjordssild"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tlocation:noerresundby_8375 = {\n\t\t\t\towner ?= root\n\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tlocation:noerresundby_8375 = {\n\t\towner ?= root\n\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "location:noerresundby_8375 = {\n\tif = {\n\t\tlimit = { owner ?= root }\n\t\tadd_location_modifier = {\n\t\t\tmodifier = du_mm_qdx_noerresundby\n\t\t\tmode = replace\n\t\t\tyears = -1\n\t\t}\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tlocation:noerresundby_8375 = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tlocation:noerresundby_8375 = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { NOT = { location_rank = location_rank:rural_settlement } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:town }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_hals",
+      "name": "Watch at Hals",
+      "desc": "Whoever holds Hals holds the door to the fjord. A castle there keeps Swedish and Hanseatic raiders out.",
+      "icon": "mhr_forts_of_maharashtra",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_noerresundby"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tlocation:hals_8387 = {\n\t\t\t\towner ?= root\n\t\t\t\thas_building = building_type:castle\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tlocation:hals_8387 = {\n\t\towner ?= root\n\t\thas_building = building_type:castle\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_hals\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tlocation:hals_8387 = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t\thas_building = building_type:castle\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tlocation:hals_8387 = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:castle owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_forbund",
+      "name": "The Aalborg Federation",
+      "desc": "Brovst, Nibe and Sejlflod send their councillors to our hall. Govern them as one city and they will act as one.",
+      "icon": "generic_vassal_ties",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:centralization_vs_decentralization < -20\n\t\t\tstability >= 25\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:centralization_vs_decentralization < -20\n\tstability >= 25\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_forbund\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:centralization_vs_decentralization < -20\n\t\t\t\t\t\tstability >= 25\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_vendsyssel_krav",
+      "name": "Claims on Vendsyssel",
+      "desc": "Dronninglund and Brønderslev trade through our harbour and pay our tolls. They might as well pay our taxes.",
+      "icon": "expansionism",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_forbund"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_army_size >= 4\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_army_size >= 4\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "set_variable = du_mission_krav\nlocation:dronninglund_8451 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\nlocation:broenderslev_8402 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qdx_1 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_vendsyssel",
+      "name": "Across the Fjord",
+      "desc": "Take Dronninglund and Brønderslev, and the road north of the fjord is ours from shore to shore.",
+      "icon": "generic_conquer_province",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_vendsyssel_krav"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:dronninglund_8451\n\t\t\towns = location:broenderslev_8402\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qdx_1 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:dronninglund_8451\n\towns = location:broenderslev_8402\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_prestige = prestige_mild_bonus\nset_variable = du_mission_krav\nlocation:stoevring_8335 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qdx_2 years = 15 }\n\t}\n}\nadd_country_modifier = {\n\tmodifier = du_mm_qdx_vendsyssel\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_himmerland",
+      "name": "The Rebild Hills",
+      "desc": "South of the city the hills of Rebild guard the road to Viborg. Støvring will answer to Aalborg.",
+      "icon": "offensive_army",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_vendsyssel"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:stoevring_8335\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qdx_2 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:stoevring_8335\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_himmerland\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_byen",
+      "name": "City of the North",
+      "desc": "Aalborg is already the largest town north of Aarhus. Give it the walls and rights of a city.",
+      "icon": "city_of_artists",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t}\n\t\t\tnum_of_non_rural >= 3\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t}\n\tnum_of_non_rural >= 3\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_byen\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tnum_of_non_rural >= 3\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { OR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:city }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_helligaand",
+      "name": "The Holy Spirit House",
+      "desc": "The brothers of the Holy Spirit care for the sick and teach the poor. A library in their house will serve the whole city.",
+      "icon": "involved_laity",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_byen"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:library\n\t\t\t}\n\t\t\tsocietal_value:spiritualist_vs_humanist > 40\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:library\n\t}\n\tsocietal_value:spiritualist_vs_humanist > 40\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_helligaand\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsocietal_value:spiritualist_vs_humanist > 40\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = spiritualist_vs_humanist value = societal_value_move_to_right }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_koebmaend",
+      "name": "Merchants of Aalborg",
+      "desc": "Our merchants sail to Norway with grain and return with timber. Give them counting houses and a fleet to protect them.",
+      "icon": "hol_trading_spirit",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_byen",
+        "du_m_qdx_salteri"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t\tregular_navy_size >= 6\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 1\n\t}\n\tregular_navy_size >= 6\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qdx_koebmaend\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t\tregular_navy_size >= 6\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qdx_nordjylland",
+      "name": "Capital of North Jutland",
+      "desc": "From Hals to Rebild, from the herring banks to the hills, the north answers to Aalborg.",
+      "icon": "dan_rulers_of_the_north",
+      "group": "group_1",
+      "requires": [
+        "du_m_qdx_hals",
+        "du_m_qdx_himmerland",
+        "du_m_qdx_helligaand",
+        "du_m_qdx_koebmaend"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tnum_locations >= 80\n\t\t\tstability >= 40\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tnum_locations >= 80\n\tstability >= 40\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 2 }\n\tset_country_rank_effect = { rank = country_rank:rank_duchy }\n}\nadd_prestige = prestige_mild_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qdx_nordjylland\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

@@ -1,0 +1,355 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m_qft",
+    "name": "Watch on the Sound",
+    "icon": "a_fortified_border",
+    "repeatable": false,
+    "player_playstyle": "diplomatic",
+    "chance": 5000,
+    "notes": "Helsingborg looks across the narrowest part of the Sound to Zealand. Our tower of Kärnan watches every ship that passes, our hills hide coal, and our districts are governed by a free and open council. The Sound has two shores, and both could be watched from here.",
+    "blocks": {
+      "visible": "has_or_had_tag = QFT",
+      "enabled": "always = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Watch on the Sound",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m_qft_kaernan",
+      "name": "The Tower of Kärnan",
+      "desc": "The great brick tower on the hill can be seen from Helsingør. Make it the strongest keep on the Sound.",
+      "icon": "mhr_forts_of_maharashtra",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:castle\n\t\t\t}\n\t\t\tregular_army_size >= 3\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:castle\n\t}\n\tregular_army_size >= 3\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_kaernan\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:castle\n\t\t\t\t\t\t}\n\t\t\t\t\t\tregular_army_size >= 3\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:castle owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_flaade",
+      "name": "Ships on the Sound",
+      "desc": "A tower can see a ship; only a fleet can stop one. Build ours.",
+      "icon": "baltic_shipyard",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_kaernan"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:dock\n\t\t\t}\n\t\t\tregular_navy_size >= 8\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:dock\n\t}\n\tregular_navy_size >= 8\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_flaade\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:dock\n\t\t\t\t\t\t}\n\t\t\t\t\t\tregular_navy_size >= 8\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:dock owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_kul",
+      "name": "Coal of the Hills",
+      "desc": "Black stone burns in the hills by Höganäs and Bjuv. The smiths of Lübeck will pay for every cart of it.",
+      "icon": "coke_smelting",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\traw_material ?= goods:coal\n\t\t\t\trgo_level >= 2\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\traw_material ?= goods:coal\n\t\trgo_level >= 2\n\t\tcount >= 3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_kul\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\traw_material ?= goods:coal\n\t\t\t\t\t\t\trgo_level >= 2\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { raw_material ?= goods:coal }\n\t\t\t\torder_by = rgo_level\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_rgo_upgrade = { cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_teglvaerk",
+      "name": "Kilns and Brickworks",
+      "desc": "Coal makes heat, heat makes brick, and brick makes towns. Build the kilns.",
+      "icon": "netherlandish_protoindustry",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_kul"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:local_smelters\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 1\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:local_smelters\n\t\tcount >= 1\n\t}\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 1\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_teglvaerk\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:local_smelters\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 1\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement raw_material = goods:iron NOT = { has_building = building_type:local_smelters } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:local_smelters owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 1\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_distrikter",
+      "name": "The Districts of Helsingborg",
+      "desc": "Bjuv, Höganäs, Kävlinge, Landskrona, Svalöv and Åstorp sit in our council. A centralised council can make them one republic.",
+      "icon": "nav_chartered_councils",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:centralization_vs_decentralization < -45\n\t\t\tstability >= 25\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:centralization_vs_decentralization < -45\n\tstability >= 25\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_distrikter\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:centralization_vs_decentralization < -45\n\t\t\t\t\t\tstability >= 25\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = centralization_vs_decentralization value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_landskrona",
+      "name": "The Harbour at Landskrona",
+      "desc": "Landskrona has the best natural harbour in Scania. It should serve the whole republic.",
+      "icon": "port_cost_distance_from_capital_choice_mil",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_distrikter"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tlocation:landskrona_sk = {\n\t\t\t\towner ?= root\n\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t}\n\t\t\tlocation:landskrona_sk = {\n\t\t\t\towner ?= root\n\t\t\t\thas_building = building_type:wharf\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tlocation:landskrona_sk = {\n\t\towner ?= root\n\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t}\n\tlocation:landskrona_sk = {\n\t\towner ?= root\n\t\thas_building = building_type:wharf\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "location:landskrona_sk = {\n\tif = {\n\t\tlimit = { owner ?= root }\n\t\tadd_location_modifier = {\n\t\t\tmodifier = du_mm_qft_landskrona\n\t\t\tmode = replace\n\t\t\tyears = -1\n\t\t}\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tlocation:landskrona_sk = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t\tNOT = { location_rank = location_rank:rural_settlement }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tlocation:landskrona_sk = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t\thas_building = building_type:wharf\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tlocation:landskrona_sk = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { NOT = { location_rank = location_rank:rural_settlement } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:town }\n\t\t\t\t}\n\t\t\t}\n\t\t\tlocation:landskrona_sk = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:wharf owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_fri_handel",
+      "name": "Free Trade on the Sound",
+      "desc": "Our council lets any honest merchant trade in Helsingborg. That is why they all come here.",
+      "icon": "free_trade",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_distrikter"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:serfdom_vs_free_subjects > 65\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:market_village\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:serfdom_vs_free_subjects > 65\n\tany_owned_location = {\n\t\thas_building = building_type:market_village\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_fri_handel\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:serfdom_vs_free_subjects > 65\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:market_village\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = serfdom_vs_free_subjects value = societal_value_move_to_right }\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement NOT = { has_building = building_type:market_village } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:market_village owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_krav",
+      "name": "Claims on Ängelholm",
+      "desc": "Ängelholm sits on the bay north of our hills. Its lord trades with us and fights against us. We should choose for him.",
+      "icon": "expansionism",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_flaade"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_army_size >= 4\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_army_size >= 4\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "set_variable = du_mission_krav\nlocation:angelholm_sk = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qft_1 years = 15 }\n\t}\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_angelholm",
+      "name": "The Bay of Skälderviken",
+      "desc": "Take Ängelholm, and the coast from Kullen to Landskrona is ours.",
+      "icon": "generic_conquer_province",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_krav"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:angelholm_sk\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qft_1 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:angelholm_sk\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_prestige = prestige_mild_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qft_angelholm\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_to_kyster",
+      "name": "Both Shores of the Sound",
+      "desc": "Helsingør sits on the far shore, a lordling's vassal. With both shores in one hand, every ship would pay one toll, to us.",
+      "icon": "dan_rulers_of_the_north",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_angelholm",
+        "du_m_qft_teglvaerk"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tsocietal_value:belligerent_vs_conciliatory < 30\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tsocietal_value:belligerent_vs_conciliatory < 30\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "set_variable = du_mission_krav\nlocation:sankt_olai_7437 = {\n\tif = {\n\t\tlimit = { NOT = { owner ?= root } }\n\t\tadd_core = root\n\t}\n}\ncustom_tooltip = du_mission_krav_tt\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tset_variable = { name = du_m_ai_krav_qft_2 years = 15 }\n\t}\n}\nadd_country_modifier = {\n\tmodifier = du_mm_qft_to_kyster\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tsocietal_value:belligerent_vs_conciliatory < 30\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tchange_societal_value = { type = belligerent_vs_conciliatory value = societal_value_move_to_left }\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_helsingoer",
+      "name": "The Far Shore",
+      "desc": "Helsingør is ours. From Kärnan we can now see our own banner on the other side of the water.",
+      "icon": "royal_navy",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_to_kyster"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:sankt_olai_7437\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t\tNOT = { has_variable = du_m_ai_krav_qft_2 }\n\t\t}\n\t}\n}\ntrigger_else = {\n\towns = location:sankt_olai_7437\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_qft_helsingoer\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m_qft_vagten",
+      "name": "Watch on the Sound",
+      "desc": "Tower, fleet, harbour and coal: Helsingborg is the watch on the Sound, and the Sound knows it.",
+      "icon": "a_fortified_border",
+      "group": "group_1",
+      "requires": [
+        "du_m_qft_landskrona",
+        "du_m_qft_fri_handel",
+        "du_m_qft_helsingoer"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tdevelopment >= 18\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t}\n\tcapital = {\n\t\tdevelopment >= 18\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 2 }\n\tset_country_rank_effect = { rank = country_rank:rank_duchy }\n}\nadd_prestige = prestige_mild_bonus\nadd_country_modifier = {\n\tmodifier = du_mm_qft_vagten_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tdevelopment >= 18\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { OR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:city }\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tchange_development = 5\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

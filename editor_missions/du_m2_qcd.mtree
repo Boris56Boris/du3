@@ -1,0 +1,219 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m2_qcd",
+    "name": "Albani and the Island",
+    "icon": "grand_banquets",
+    "repeatable": false,
+    "player_playstyle": "diplomatic",
+    "chance": 6000,
+    "notes": "Odense brews the best beer on Funen and hosts the island's Landsting. In the new age the town that is Funen's heart could become the master of the whole island.",
+    "blocks": {
+      "visible": "has_or_had_tag = QCD",
+      "enabled": "du_mission_age2_trigger = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Albani and the Island",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m2_qcd_albani",
+      "name": "The Albani Brewery",
+      "desc": "A great brewery by the river, named for the old church of Saint Alban.",
+      "icon": "grand_banquets",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tlocation:fredens_7782 = {\n\t\t\t\towner ?= root\n\t\t\t\thas_building = building_type:du_albani\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tlocation:fredens_7782 = {\n\t\towner ?= root\n\t\thas_building = building_type:du_albani\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qcd_albani\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tlocation:fredens_7782 = {\n\t\t\t\t\t\t\towner ?= root\n\t\t\t\t\t\t\thas_building = building_type:du_albani\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tlocation:fredens_7782 = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:du_albani owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qcd_domskole",
+      "name": "School of Saint Knud",
+      "desc": "The cathedral school of Odense is the best on Funen.",
+      "icon": "library_advance",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_storstad_2_domskolen\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_storstad_2_domskolen\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:library\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qcd_domskole\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\thas_advance = dku_storstad_2_domskolen\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:library } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qcd_landsting",
+      "name": "Landsting of Funen",
+      "desc": "The lords of Funen meet in Odense.",
+      "icon": "pal_a_just_ruler",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_storstad_2_landstingsbyen\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tprestige >= 40\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_storstad_2_landstingsbyen\n\t\t}\n\t\tAND = {\n\t\t\tprestige >= 40\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qcd_landsting\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qcd_kanal",
+      "name": "Canal to the Sea",
+      "desc": "Dig the river deeper so ships can reach the town.",
+      "icon": "river_trade",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qcd_albani"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\thas_building = building_type:dock\n\t\t\t}\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:wharf\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\thas_building = building_type:dock\n\t}\n\tany_owned_location = {\n\t\thas_building = building_type:wharf\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qcd_kanal\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\thas_building = building_type:dock\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:wharf\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root }\n\t\t\t\t\tconstruct_building = { building_type = building_type:dock owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } is_coastal = yes NOT = { has_building = building_type:wharf } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:wharf owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qcd_nyborg",
+      "name": "The Castle at Nyborg",
+      "desc": "Nyborg guards the Great Belt crossing and hosts the Danehof. It belongs to Funen's capital.",
+      "icon": "generic_conquer_province",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qcd_landsting"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\towns = location:nyborg_7724\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tlocation:nyborg_7724 = { is_owned_or_owned_by_subjects_or_below_of = root }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\towns = location:nyborg_7724\n\t\t}\n\t\tAND = {\n\t\t\tlocation:nyborg_7724 = { is_owned_or_owned_by_subjects_or_below_of = root }\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qcd_nyborg\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qcd_fynske_hus",
+      "name": "Houses of Funen",
+      "desc": "Merchants and lords of Funen build their town houses in Odense.",
+      "icon": "noble_resilience",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qcd_domskole",
+        "du_m2_qcd_kanal"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tcapital = {\n\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t}\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tcapital = {\n\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t}\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qcd_fynske_hus\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { OR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:city }\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qcd_fyn",
+      "name": "Funen United",
+      "desc": "One island, one capital.",
+      "icon": "cultural_ties_culture",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qcd_nyborg",
+        "du_m2_qcd_fynske_hus"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_or_had_tag = QZL\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:odense_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:kerteminde_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:nordfyns_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:faaborg_midtfyn_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tarea:assens_area = {\n\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_or_had_tag = QZL\n\t\t}\n\t\tAND = {\n\t\t\tarea:odense_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:kerteminde_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:nordfyns_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:faaborg_midtfyn_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tarea:assens_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 3 }\n\tset_country_rank_effect = { rank = country_rank:rank_kingdom }\n}\nadd_country_modifier = {\n\tmodifier = du_mm_a2_qcd_fyn_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}

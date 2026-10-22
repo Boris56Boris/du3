@@ -1,0 +1,219 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "du_m2_qft",
+    "name": "Coal and the Sound",
+    "icon": "coke_smelting",
+    "repeatable": false,
+    "player_playstyle": "diplomatic",
+    "chance": 6000,
+    "notes": "Helsingborg's coal and its watch on the Sound make it the second gate of the Baltic. In the new age our mines, kilns and ships could make the town as rich as any on the Sound.",
+    "blocks": {
+      "visible": "has_or_had_tag = QFT",
+      "enabled": "du_mission_age2_trigger = yes",
+      "select_trigger": "",
+      "on_start": "hidden_effect = { if = { limit = { is_ai = yes } du_mission_ai_ventetid_effect = yes } }",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Coal and the Sound",
+      "color": "#4f81bd",
+      "visible": "",
+      "notes": "Original Denmark Universalis mission tree."
+    }
+  ],
+  "missions": [
+    {
+      "id": "du_m2_qft_domskole",
+      "name": "School of Helsingborg",
+      "desc": "A school for the sons of the council.",
+      "icon": "library_advance",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_storstad_2_domskolen\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_storstad_2_domskolen\n\t\t}\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:library\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qft_domskole\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tOR = {\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\thas_advance = dku_storstad_2_domskolen\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\tAND = {\n\t\t\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\t\t\thas_building = building_type:library\n\t\t\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t\t\t}\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:library } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:library owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qft_landsting",
+      "name": "Council of the Districts",
+      "desc": "Our districts meet in Helsingborg.",
+      "icon": "pal_a_just_ruler",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tOR = {\n\t\t\t\tAND = {\n\t\t\t\t\thas_advance = dku_storstad_2_landstingsbyen\n\t\t\t\t}\n\t\t\t\tAND = {\n\t\t\t\t\tstability >= 40\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tOR = {\n\t\tAND = {\n\t\t\thas_advance = dku_storstad_2_landstingsbyen\n\t\t}\n\t\tAND = {\n\t\t\tstability >= 40\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qft_landsting\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qft_miner",
+      "name": "Deep Mines",
+      "desc": "Dig deeper for coal.",
+      "icon": "coke_smelting",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\traw_material ?= goods:coal\n\t\t\t\trgo_level >= 3\n\t\t\t\tcount >= 3\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\traw_material ?= goods:coal\n\t\trgo_level >= 3\n\t\tcount >= 3\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qft_miner\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\traw_material ?= goods:coal\n\t\t\t\t\t\t\trgo_level >= 3\n\t\t\t\t\t\t\tcount >= 3\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { raw_material ?= goods:coal }\n\t\t\t\torder_by = rgo_level\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 3\n\t\t\t\tconstruct_rgo_upgrade = { cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qft_keramik",
+      "name": "Höganäs Stoneware",
+      "desc": "Clay and coal together make stoneware that sells across the Baltic.",
+      "icon": "medici_porcelain",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qft_miner"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:local_smelters\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t\tany_owned_location = {\n\t\t\t\thas_building = building_type:counting_house\n\t\t\t\tcount >= 2\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tany_owned_location = {\n\t\thas_building = building_type:local_smelters\n\t\tcount >= 2\n\t}\n\tany_owned_location = {\n\t\thas_building = building_type:counting_house\n\t\tcount >= 2\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qft_keramik\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:local_smelters\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t\tany_owned_location = {\n\t\t\t\t\t\t\thas_building = building_type:counting_house\n\t\t\t\t\t\t\tcount >= 2\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { location_rank = location_rank:rural_settlement raw_material = goods:iron NOT = { has_building = building_type:local_smelters } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:local_smelters owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t\tordered_owned_location = {\n\t\t\t\tlimit = { NOT = { location_rank = location_rank:rural_settlement } NOT = { has_building = building_type:counting_house } }\n\t\t\t\torder_by = population\n\t\t\t\tcheck_range_bounds = no\n\t\t\t\tmax = 2\n\t\t\t\tconstruct_building = { building_type = building_type:counting_house owner = root payer = root instant = yes cost_multiplier = 0 cost_multiplier_reason = \"DU_GRATIS_BYGNING\" }\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qft_flaade",
+      "name": "Navy of the Sound",
+      "desc": "Ships to match Kärnan's walls.",
+      "icon": "royal_navy",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qft_landsting"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tregular_navy_size >= 15\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tregular_navy_size >= 15\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qft_flaade\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qft_kysten",
+      "name": "The Kullen Coast",
+      "desc": "Höganäs, Ängelholm and Åstorp are our coast.",
+      "icon": "expansionism",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qft_domskole"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tarea:hoganas_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t\tarea:angelholm_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t\tarea:aastorp_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tarea:hoganas_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.8\n\t\t}\n\t}\n\tarea:angelholm_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.8\n\t\t}\n\t}\n\tarea:aastorp_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.8\n\t\t}\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "add_country_modifier = {\n\tmodifier = du_mm_a2_qft_kysten\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "du_m2_qft_sundet",
+      "name": "Second Gate of the Baltic",
+      "desc": "Coal, ships and stoneware: Helsingborg is the second gate of the Baltic.",
+      "icon": "dan_rulers_of_the_north",
+      "group": "group_1",
+      "requires": [
+        "du_m2_qft_keramik",
+        "du_m2_qft_flaade",
+        "du_m2_qft_kysten"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Imported from Denmark Universalis mission generator.",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "trigger_if = {\n\tlimit = { is_ai = yes }\n\tOR = {\n\t\tAND = {\n\t\t\tarea:helsingborg_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 1.0\n\t\t\t\t}\n\t\t\t}\n\t\t\tarea:landskrona_area = {\n\t\t\t\tany_location_in_area = {\n\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\tpercent >= 0.8\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t}\n\t\t}\n\t\tAND = {\n\t\t\tdu_mission_ai_klar_trigger = yes\n\t\t}\n\t}\n}\ntrigger_else = {\n\tarea:helsingborg_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 1.0\n\t\t}\n\t}\n\tarea:landskrona_area = {\n\t\tany_location_in_area = {\n\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\tpercent >= 0.8\n\t\t}\n\t}\n\tcapital = {\n\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "if = {\n\tlimit = { country_rank_level < 3 }\n\tset_country_rank_effect = { rank = country_rank:rank_kingdom }\n}\nadd_country_modifier = {\n\tmodifier = du_mm_a2_qft_sundet_endelig\n\tmode = replace\n\tyears = -1\n}\nhidden_effect = {\n\tif = {\n\t\tlimit = { is_ai = yes }\n\t\tif = {\n\t\t\tlimit = {\n\t\t\t\tNOT = {\n\t\t\t\t\tAND = {\n\t\t\t\t\t\tarea:helsingborg_area = {\n\t\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\t\tpercent >= 1.0\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\tarea:landskrona_area = {\n\t\t\t\t\t\t\tany_location_in_area = {\n\t\t\t\t\t\t\t\tis_owned_or_owned_by_subjects_or_below_of = root\n\t\t\t\t\t\t\t\tpercent >= 0.8\n\t\t\t\t\t\t\t}\n\t\t\t\t\t\t}\n\t\t\t\t\t\tcapital = {\n\t\t\t\t\t\t\tOR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis }\n\t\t\t\t\t\t}\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\tcapital = {\n\t\t\t\tif = {\n\t\t\t\t\tlimit = { owner ?= root NOT = { OR = { location_rank = location_rank:city location_rank = location_rank:du_metropolis location_rank = location_rank:megalopolis } } }\n\t\t\t\t\tchange_location_rank_effect = { location_rank = location_rank:city }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tdu_mission_ai_ventetid_effect = yes\n\t}\n}",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [],
+  "hidden_groups": []
+}
