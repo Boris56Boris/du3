@@ -1,0 +1,1852 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "",
+  "tree": {
+    "id": "senvm_fof",
+    "name": "Fate of France",
+    "icon": "",
+    "repeatable": false,
+    "player_playstyle": "",
+    "chance": 3600,
+    "notes": "",
+    "blocks": {
+      "visible": "",
+      "enabled": "",
+      "select_trigger": "",
+      "on_start": "",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "Montjoie Saint-Denis (fra)",
+      "color": "#2838ff",
+      "visible": "",
+      "notes": "",
+      "code": "fra"
+    },
+    {
+      "id": "group_2",
+      "name": "Une Repubplique Indivisible  (VDU)",
+      "color": "#ff0000",
+      "visible": "",
+      "notes": "When this group is active tree is freesubjects individualism this measn also chanign the requiremnts in the disaters",
+      "code": "vdu"
+    },
+    {
+      "id": "group_4",
+      "name": "Aquitaine (aqn)",
+      "color": "#d0efff",
+      "visible": "",
+      "notes": "",
+      "code": "aqn"
+    },
+    {
+      "id": "group_5",
+      "name": "Espérance (BOU)",
+      "color": "#c289f5",
+      "visible": "",
+      "notes": "Every mission in this gourp should reduce ire by 10",
+      "code": "bou"
+    },
+    {
+      "id": "group_6",
+      "name": "Grand Duc du Ponant (BUR)",
+      "color": "#d105c2",
+      "visible": "",
+      "notes": "",
+      "code": "bur"
+    },
+    {
+      "id": "group_7",
+      "name": "Gendarme Dictatorship Armanngac",
+      "color": "#581d52",
+      "visible": "",
+      "notes": "",
+      "code": "1"
+    },
+    {
+      "id": "group_8",
+      "name": "Vassal of France (vof)",
+      "color": "#8080c0",
+      "visible": "",
+      "notes": "",
+      "code": "vof"
+    },
+    {
+      "id": "group_9",
+      "name": "Generic Knights (GK)",
+      "color": "#d2ffd0",
+      "visible": "",
+      "notes": "note visible for verdun",
+      "code": "gk"
+    },
+    {
+      "id": "group_10",
+      "name": "generic individualism (GI)",
+      "color": "#f3ffd0",
+      "visible": "",
+      "notes": "Should not be cisible for gendarme dictatorship",
+      "code": "gi"
+    }
+  ],
+  "missions": [
+    {
+      "id": "senvm_fof_gk_destroy_pretenders",
+      "name": "[Localised]",
+      "desc": "",
+      "icon": "angevin_heraldry",
+      "group": "group_9",
+      "requires": [
+        "senvm_fof_bur_4"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "called \"Destroy the Pretenders\" for france proper\ncalled \"Knightly Tradition\" For Burgundy\ncalled \"Rise to Power\" for everyone else\n\n\nalways\nwar score effecientcy 20% \nif not france proper:\ngives them the base game \"granted right to expand\" modifier from the base game. say that this allows them to declare war on othr appanages without going to war with france. Only grant this modifier for 80 years",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_normandy",
+      "name": "La Normandie",
+      "desc": "",
+      "icon": "french_language_in_all_courts",
+      "group": "group_1",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Areas: normandy_area. Ownable locations: 28. 1337 start: France owns 0, French subjects 27, others 1. Threshold 25 = +25 over start; weighted effort 25 (subject land x1, foreign land x2; target ~60).\n\nQuest system: evaluated when the mission is taken; a quest whose reward location is not owned drops out; at least half (rounded up) of the remaining quests must be true to take the mission.\nEach TRUE quest: (1) reward location goes up one rank - rural to town, town to city; never megalopolis except Paris; a city gets +5 dev instead. (2) its patron faction +5 disposition, fixed, positive only. (3) its patron faction gains influence in the reward location's province. (4) its bonus becomes an option in the choice event.\nChoice event on completion: one option per TRUE quest. The option gives its country modifier permanently AND spreads the patron faction's influence to half the provinces of that quest's area (rounded up, counting the reward province; most developed first; skips other factions' leader land), via senvm_fof_spread_apply. Disposition and influence apply only while the Fate of France situation is active and the patron faction still exists; the rank-up and the modifier always apply.\nEach TRUE quest also adds 1 to var:senvm_fof_mq_true (read by the final mission).",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "any_owned_location = {\n\tcount >= 25\n\tarea = area:normandy_area\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "rouen  [patron: royals]\n  Q  \"Le Clos des Galées\": fiber_crops RGO >= 4 in lisieux; naval_supplies_guild lvl >= 2 in rouen\n  R  already a city: +5 dev instead; royals disposition +5; influence in the reward province\n  PICK  naval_morale_modifier = 0.05, navy_galley_build_cost_modifier = -0.10; royals influence in half the provinces of normandy_area\n\nNo choice event: Normandy has one quest, so its bonus and the half-area influence apply directly if the quest is true.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_seine_saone",
+      "name": "Seine et Saône",
+      "desc": "",
+      "icon": "colonial_militia",
+      "group": "group_1",
+      "requires": [
+        "senvm_fof_fra_normandy"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Areas: ile_de_france_area, picardy_area, champagne_area, burgundy_area, lyonnais_area. Ownable locations: 110. 1337 start: France owns 57, French subjects 43, others 10. Threshold 108 = +51 over start; weighted effort 59 (subject land x1, foreign land x2; target ~60).\n\nQuest system: evaluated when the mission is taken; a quest whose reward location is not owned drops out; at least half (rounded up) of the remaining quests must be true to take the mission.\nEach TRUE quest: (1) reward location goes up one rank - rural to town, town to city; never megalopolis except Paris; a city gets +5 dev instead. (2) its patron faction +5 disposition, fixed, positive only. (3) its patron faction gains influence in the reward location's province. (4) its bonus becomes an option in the choice event.\nChoice event on completion: one option per TRUE quest. The option gives its country modifier permanently AND spreads the patron faction's influence to half the provinces of that quest's area (rounded up, counting the reward province; most developed first; skips other factions' leader land), via senvm_fof_spread_apply. Disposition and influence apply only while the Fate of France situation is active and the patron faction still exists; the rank-up and the modifier always apply.\nEach TRUE quest also adds 1 to var:senvm_fof_mq_true (read by the final mission).",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "any_owned_location = {\n\tcount >= 108\n\tOR = {\n\t\tarea = area:ile_de_france_area\n\t\tarea = area:picardy_area\n\t\tarea = area:champagne_area\n\t\tarea = area:burgundy_area\n\t\tarea = area:lyonnais_area\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "paris  [patron: church]\n  Q  \"L'Université de Paris\": university in paris; scriptorium lvl >= 2 in paris\n  R  rank city -> megalopolis (Paris only); church disposition +5; influence in the reward province\n  PICK  research_speed = 0.1; church influence in half the provinces of ile_de_france_area\n\narras  [patron: republicans]\n  Q  \"Les Hautes-Lisses d'Arras\": wool RGO >= 4 in corbie; dyes RGO >= 5 in amiens\n  R  already a city: +5 dev instead; republicans disposition +5; influence in the reward province\n  PICK  num_possible_artists = 1, hire_artist_cost_modifier = -0.20; republicans influence in half the provinces of picardy_area\n\ntroyes  [patron: liberals]\n  Q  \"Les Moulins de Troyes\": paper_guild lvl >= 2 in troyes; market centre building in provins\n  R  already a city: +5 dev instead; liberals disposition +5; influence in the reward province\n  PICK  country_cabinet_efficiency = 0.05; liberals influence in half the provinces of champagne_area\n\ndijon  [patron: conservatives]\n  Q  \"La Côte de Beaune\": wine RGO >= 5 in beaune; winery lvl >= 2 in dijon\n  R  rank town -> city; conservatives disposition +5; influence in the reward province\n  PICK  diplomatic_reputation = 1; conservatives influence in half the provinces of burgundy_area\n\nlyon  [patron: liberals]\n  Q  \"La Grande Fabrique\": silk RGO >= 4 in lyon; fine_cloth_guild lvl >= 2 in lyon\n  R  rank town -> city; liberals disposition +5; influence in the reward province\n  PICK  global_merchant_power = 0.10; liberals influence in half the provinces of lyonnais_area\n\nEVENT senvm_fof_mq_seine_saone: choose 1 PICK from the TRUE quests above.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_ouest",
+      "name": "L'Ouest",
+      "desc": "",
+      "icon": "patron_of_music",
+      "group": "group_1",
+      "requires": [
+        "senvm_fof_fra_normandy"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Areas: brittany_area, anjou_area, poitou_area, orleanais_area. Ownable locations: 101. 1337 start: France owns 35, French subjects 57, others 9. Threshold 94 = +59 over start; weighted effort 61 (subject land x1, foreign land x2; target ~60).\n\nQuest system: evaluated when the mission is taken; a quest whose reward location is not owned drops out; at least half (rounded up) of the remaining quests must be true to take the mission.\nEach TRUE quest: (1) reward location goes up one rank - rural to town, town to city; never megalopolis except Paris; a city gets +5 dev instead. (2) its patron faction +5 disposition, fixed, positive only. (3) its patron faction gains influence in the reward location's province. (4) its bonus becomes an option in the choice event.\nChoice event on completion: one option per TRUE quest. The option gives its country modifier permanently AND spreads the patron faction's influence to half the provinces of that quest's area (rounded up, counting the reward province; most developed first; skips other factions' leader land), via senvm_fof_spread_apply. Disposition and influence apply only while the Fate of France situation is active and the patron faction still exists; the rank-up and the modifier always apply.\nEach TRUE quest also adds 1 to var:senvm_fof_mq_true (read by the final mission).",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "any_owned_location = {\n\tcount >= 94\n\tOR = {\n\t\tarea = area:brittany_area\n\t\tarea = area:anjou_area\n\t\tarea = area:poitou_area\n\t\tarea = area:orleanais_area\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "nantes  [patron: liberals]\n  Q  \"Les Toiles de Bretagne\": fiber_crops RGO >= 4 in vitre; port building in nantes\n  R  rank town -> city; liberals disposition +5; influence in the reward province\n  PICK  global_sailors_modifier = 0.15, navy_light_ship_build_cost_modifier = -0.10; liberals influence in half the provinces of brittany_area\n\nangers  [patron: conservatives]\n  Q  \"Le Marbre de Sablé\": marble RGO >= 3 in sable; mason lvl >= 2 in angers\n  R  already a city: +5 dev instead; conservatives disposition +5; influence in the reward province\n  PICK  global_construction_speed = 0.10; conservatives influence in half the provinces of anjou_area\n\npoitiers  [patron: gendarmes]\n  Q  \"Les Chamoiseurs du Poitou\": livestock RGO >= 4 in montaigu; tannery lvl >= 2 in poitiers\n  R  rank town -> city; gendarmes disposition +5; influence in the reward province\n  PICK  army_heavy_cavalry_maintenance_cost_modifier = -0.10; gendarmes influence in half the provinces of poitou_area\n\nbourges  [patron: royals]\n  Q  \"Les Forges du Berry\": iron RGO >= 4 in blois; local_smelters in chateauroux\n  R  rank town -> city; royals disposition +5; influence in the reward province\n  PICK  nobles_estate_levy_size = 0.20; royals influence in half the provinces of orleanais_area\n\nEVENT senvm_fof_mq_ouest: choose 1 PICK from the TRUE quests above.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_est",
+      "name": "Les Marches de l'Est",
+      "desc": "",
+      "icon": "divine_church_music",
+      "group": "group_1",
+      "requires": [
+        "senvm_fof_fra_normandy"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Areas: lorraine_area, franche_comte_area. Ownable locations: 41. 1337 start: France owns 0, French subjects 6, others 35. Threshold 33 = +33 over start; weighted effort 60 (subject land x1, foreign land x2; target ~60).\n\nQuest system: evaluated when the mission is taken; a quest whose reward location is not owned drops out; at least half (rounded up) of the remaining quests must be true to take the mission.\nEach TRUE quest: (1) reward location goes up one rank - rural to town, town to city; never megalopolis except Paris; a city gets +5 dev instead. (2) its patron faction +5 disposition, fixed, positive only. (3) its patron faction gains influence in the reward location's province. (4) its bonus becomes an option in the choice event.\nChoice event on completion: one option per TRUE quest. The option gives its country modifier permanently AND spreads the patron faction's influence to half the provinces of that quest's area (rounded up, counting the reward province; most developed first; skips other factions' leader land), via senvm_fof_spread_apply. Disposition and influence apply only while the Fate of France situation is active and the patron faction still exists; the rank-up and the modifier always apply.\nEach TRUE quest also adds 1 to var:senvm_fof_mq_true (read by the final mission).",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "any_owned_location = {\n\tcount >= 33\n\tOR = {\n\t\tarea = area:lorraine_area\n\t\tarea = area:franche_comte_area\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "nancy  [patron: conservatives]\n  Q  \"Les Gentilshommes Verriers\": sand RGO >= 3 in salm; rural_glassmaker lvl >= 2 in darney\n  R  rank rural -> town; conservatives disposition +5; influence in the reward province\n  PICK  global_raw_material_output = 0.10; conservatives influence in half the provinces of lorraine_area\n\nsalins_les_bains  [patron: jacquerie]\n  Q  \"La Grande Saline\": salt RGO >= 5 in salins_les_bains; sawmill in ornans\n  R  rank rural -> town; jacquerie disposition +5; influence in the reward province\n  PICK  peasants_estate_levy_size = 0.30; jacquerie influence in half the provinces of franche_comte_area\n\nEVENT senvm_fof_mq_est: choose 1 PICK from the TRUE quests above.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_sud_ouest",
+      "name": "Le Sud-Ouest",
+      "desc": "",
+      "icon": "austrian_ambition",
+      "group": "group_1",
+      "requires": [
+        "senvm_fof_fra_normandy"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Areas: guyenne_area, gascony_area, limousin_province, auvergne_area, languedoc_area. Ownable locations: 125. 1337 start: France owns 68, French subjects 32, others 25. Threshold 114 = +46 over start; weighted effort 60 (subject land x1, foreign land x2; target ~60).\n\nQuest system: evaluated when the mission is taken; a quest whose reward location is not owned drops out; at least half (rounded up) of the remaining quests must be true to take the mission.\nEach TRUE quest: (1) reward location goes up one rank - rural to town, town to city; never megalopolis except Paris; a city gets +5 dev instead. (2) its patron faction +5 disposition, fixed, positive only. (3) its patron faction gains influence in the reward location's province. (4) its bonus becomes an option in the choice event.\nChoice event on completion: one option per TRUE quest. The option gives its country modifier permanently AND spreads the patron faction's influence to half the provinces of that quest's area (rounded up, counting the reward province; most developed first; skips other factions' leader land), via senvm_fof_spread_apply. Disposition and influence apply only while the Fate of France situation is active and the patron faction still exists; the rank-up and the modifier always apply.\nEach TRUE quest also adds 1 to var:senvm_fof_mq_true (read by the final mission).",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "any_owned_location = {\n\tcount >= 114\n\tOR = {\n\t\tarea = area:guyenne_area\n\t\tarea = area:gascony_area\n\t\tarea = area:limousin_province\n\t\tarea = area:auvergne_area\n\t\tarea = area:languedoc_area\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "bordeaux  [patron: liberals]\n  Q  \"Le Clairet\": wine RGO >= 5 in libourne; port building in bordeaux\n  R  already a city: +5 dev instead; liberals disposition +5; influence in the reward province\n  PICK  trade_sea_efficiency = 0.10; liberals influence in half the provinces of guyenne_area\n\nbayonne  [patron: gendarmes]\n  Q  \"L'Aygue Ardente d'Armagnac\": wine RGO >= 4 in aire; distillers_guild lvl >= 2 in bayonne\n  R  rank town -> city; gendarmes disposition +5; influence in the reward province\n  PICK  land_morale_recovery = 0.10; gendarmes influence in half the provinces of gascony_area\n\nlimoges  [patron: church]\n  Q  \"L'Œuvre de Limoges\": rural_glassmaker lvl >= 2 in tulle; control >= 90 in limoges\n  R  rank rural -> town; church disposition +5; influence in the reward province\n  PICK  monthly_religious_influence = 0.2; church influence in half the provinces of limousin_province\n\nclermont  [patron: jacquerie]\n  Q  \"Les Couteliers d'Auvergne\": iron RGO >= 4 in molins; tools_guild lvl >= 2 in clermont\n  R  rank town -> city; jacquerie disposition +5; influence in the reward province\n  PICK  global_max_rural_control = 0.03; jacquerie influence in half the provinces of auvergne_area\n\nmontpellier  [patron: church]\n  Q  \"La Faculté de Montpellier\": university in montpellier; medicaments RGO >= 3 in melgueil\n  R  already a city: +5 dev instead; church disposition +5; influence in the reward province\n  PICK  global_disease_resistance = 0.10; church influence in half the provinces of languedoc_area\n\nEVENT senvm_fof_mq_sud_ouest: choose 1 PICK from the TRUE quests above.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_sud_est",
+      "name": "Le Sud-Est",
+      "desc": "",
+      "icon": "scientific_revolution_advance",
+      "group": "group_1",
+      "requires": [
+        "senvm_fof_fra_normandy"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Areas: provence_area, savoy_area. Ownable locations: 41. 1337 start: France owns 0, French subjects 3, others 38. Threshold 32 = +32 over start; weighted effort 61 (subject land x1, foreign land x2; target ~60).\n\nQuest system: evaluated when the mission is taken; a quest whose reward location is not owned drops out; at least half (rounded up) of the remaining quests must be true to take the mission.\nEach TRUE quest: (1) reward location goes up one rank - rural to town, town to city; never megalopolis except Paris; a city gets +5 dev instead. (2) its patron faction +5 disposition, fixed, positive only. (3) its patron faction gains influence in the reward location's province. (4) its bonus becomes an option in the choice event.\nChoice event on completion: one option per TRUE quest. The option gives its country modifier permanently AND spreads the patron faction's influence to half the provinces of that quest's area (rounded up, counting the reward province; most developed first; skips other factions' leader land), via senvm_fof_spread_apply. Disposition and influence apply only while the Fate of France situation is active and the patron faction still exists; the rank-up and the modifier always apply.\nEach TRUE quest also adds 1 to var:senvm_fof_mq_true (read by the final mission).",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "any_owned_location = {\n\tcount >= 32\n\tOR = {\n\t\tarea = area:provence_area\n\t\tarea = area:savoy_area\n\t}\n}",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "grasse  [patron: republicans]\n  Q  \"Les Consuls de Grasse\": medicaments RGO >= 4 in grasse; apothecary lvl >= 2 in aix_en_provence\n  R  rank rural -> town; republicans disposition +5; influence in the reward province\n  PICK  global_max_literacy = 10; republicans influence in half the provinces of provence_area\n\nvienne  [patron: gendarmes]\n  Q  \"Les Lames de Vienne\": iron RGO >= 4 in la_mure; weapon_guild lvl >= 2 in vienne\n  R  rank town -> city; gendarmes disposition +5; influence in the reward province\n  PICK  discipline = 0.025; gendarmes influence in half the provinces of savoy_area\n\nEVENT senvm_fof_mq_sud_est: choose 1 PICK from the TRUE quests above.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_fra_royaume",
+      "name": "Le Royaume Réuni",
+      "desc": "",
+      "icon": "fra_integration_of_new_territories",
+      "group": "group_1",
+      "requires": [
+        "senvm_fof_fra_seine_saone",
+        "senvm_fof_fra_ouest",
+        "senvm_fof_fra_est",
+        "senvm_fof_fra_sud_ouest",
+        "senvm_fof_fra_sud_est",
+        "senvm_fof_mission_69",
+        "senvm_fof_mission_70",
+        "senvm_fof_mission_66",
+        "senvm_fof_mission_67"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Reward for final mission scales with var:senvm_fof_mq_true and gives a rewward beased on the strongest faction that is not rebelious or insurectionary\n\nFrance gains diplomatic annexation speed = 1 for 20 years\n\nshown values are for maximum scaling\nConservatives: 7 develelopment in every location in france instantly\nLe Metiers: 15% production effeciency\nCatholic Church. about 35% pop growth over 20 years \nJaqueries: max tax = 0.12\nRepublicans: parliment base support 25, pop promotion speed 30%\nRoyals: maximum control 10\nIndependinists: vassal loyalty 10",
+      "manual_index": 0,
+      "blocks": {
+        "visible": "",
+        "enabled": "No faction is rebelious or insurectionary\nor \nfrance owns 80% of france region\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "senvm_fof_royaume_complete = yes\n\nEnds the Fate of France situation (listed under its end requirements).\nFrance gains the bonus of the strongest faction (largest share of France) at this moment,\nscaled by var:senvm_fof_mq_true / 19 (true area quests across the tree). Maximum values:\n  gendarmes        army_heavy_cavalry_power = 0.20, nobles_estate_levy_size = 0.50\n  church           global_population_growth = 0.0088 for 30 years (about +30% population)\n  liberals         global_production_efficiency = 0.20\n  republicans      parliament_base_support = 0.20, global_estate_max_tax = 0.10\n  royals           global_crown_estate_power = 0.095, road_cost_on_distance_from_capital = -5\n  independentists  subject_loyalty = 10\n  jacquerie        global_raw_material_output = 0.30, peasants_estate_target_satisfaction = 0.2\n  conservatives    global_max_rural_control = 0.125\nIf the situation already ended: the faction recorded as strongest at its end. None recorded: royals.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "Fields of Verdun",
+      "name": "",
+      "desc": "",
+      "icon": "khm_invest_in_irrigation",
+      "group": "group_2",
+      "requires": [
+        "senvm_fof_vdu_3",
+        "senvm_fof_mission_70"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "minimum value for the rgo output should be 6 in both etain and bar_le_duc",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Gives scaling popgrowht and rgo output of etain and bar_le_duc at a value of 22 (max)\ngives 50% pop growth spread out over the time of the modifier\ngives 2 migration attraction\nthe modifier should be dacaying\n\nthis should apply to every location in verdunois_province and barrois_province",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_2",
+      "name": "Centralisation of Cities",
+      "desc": "",
+      "icon": "urbanization",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a goverment reform that gives local production effeciency 0.1 in every city",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "verdun location is a city",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_3",
+      "name": "Republican Architechture",
+      "desc": "",
+      "icon": "ven_gothic_architecture",
+      "group": "group_2",
+      "requires": [
+        "senvm_fof_vdu_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "building effecientcy up to 0.5 when the total number of masons in masons in the country is above 15",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has influence in more than 75 locations\nor \n3 settlements that are cities",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_4",
+      "name": "Soldiers of the Republic",
+      "desc": "",
+      "icon": "french_ambition",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "regular army size > 0\n\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "land_morale = 0.2\nland movement speed = 0.1\n\na location modifier in verdun location giving 50 monthly manpower ",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_5",
+      "name": "Bill of Rights",
+      "desc": "",
+      "icon": "bill_of_rights",
+      "group": "group_2",
+      "requires": [
+        "senvm_fof_mission_69",
+        "senvm_fof_vdu_6"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "nobles power - 50%\npeasent power + 100%\nbase parliment support 10\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has built the crown power senvm_gp building",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_6",
+      "name": "Merit over Birth",
+      "desc": "Every French soldier carries the baton of a marshal of France in his knapsack.",
+      "icon": "leader_recruit_cost_advance",
+      "group": "group_2",
+      "requires": [
+        "senvm_fof_vdu_4"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "regular army size >= 4\nor \nmore than 50 locations",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "train_general_ability = 20\nmilitary_tactics = 0.5\n\nCreate a character with maximum stats\ncreate_character\nsave this characters scope for later",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_7",
+      "name": "Liberté",
+      "desc": "",
+      "icon": "rights_of_man",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks an urban right: Liberty of the Commoner\n\n10% peasent enfranchisement \n50% pop promotion speed\nglobal: 0.05 cultural capacity\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has embraced renaissance institution \nor \nmore than 50 free subjects",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_8",
+      "name": "Popular Soverignty",
+      "desc": "",
+      "icon": "involved_laity",
+      "group": "group_2",
+      "requires": [
+        "senvm_fof_vdu_7",
+        "senvm_fof_vdu_12",
+        "senvm_fof_vdu_13"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Since the different faction countries dont have to care about the other factions that space should instead be occupied by a mechanic about generating authority \n\nFor Verdun this mechanic should be \"Popular Soverignty\" with decisions all the modifeirs from this will be temporary\n3 decisions whose name is custom localisation and whose requirement rises each time you click the mission to give the impression of it being a new misison\n1 misison for each of the town rights as in you have to have placed more and more and you get authority from having placed them\nThe decision should grant a 5 year modifier of either total 5% population growth(Liberte) or 1 development in the whole countr spread out over 5 years(egalite) or 50 monthly manpower for 5 years (fratenite)\nand also authority\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Must have at least 6 of any of the 3 urban rights",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_9",
+      "name": "Custom local [Mort aux Tyrans; Paix aux Chaumines]",
+      "desc": "",
+      "icon": "liberty_heroes",
+      "group": "group_2",
+      "requires": [
+        "Fields of Verdun",
+        "senvm_fof_vdu_5",
+        "senvm_fof_vdu_10"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "If you have influence in 70% of the land in the situation you can annex france proper and get all of frances vassals as your own, then called Paix aux Chaumines. You also get at temporary vassal annexation modifier (100% 20 years)\nif not declare war  on france with and its vassals with a fantastic wargoal and gain all of teh territory you influence as your own, then called Mort aux Tyrans\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "influence in 70% or more of french land\nor \nregular army size = france proper",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_1",
+      "name": "French Heritage",
+      "desc": "",
+      "icon": "french_heritage",
+      "group": "group_4",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Since the different faction countries dont have to care about the other factions that space should instead be occupied by a mechanic about generating authority \n\nStarts earning authority for each production of wine. 0.05 monthly authority per wine rgo output and wine building\nhidden (\nif year is after 1370 and you are a vassal of england\nbecome vassal of france\n)\ncan to invest in 5 authority for 100 ducats\nThey do not cash out their authority immediatly unlike other factions. Their authority as long as it is not cashed out should grow monthly at a rate equal to your tax base growth.\nthere should be a bar showing your total authority over time\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "is not a vassal of england\nhidden (\nor \nyear is after 1370\n)",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_2",
+      "name": "Wine Trade",
+      "desc": "",
+      "icon": "mod_diplomazia_balsamica",
+      "group": "group_4",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a Decision in the situation allowing you to upgrade the maximum rgo size of wine location with is_full_expanded_rgo = yes by 1. (stackable)\ncost 100 ducats",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_3",
+      "name": "Wine Oligarchs",
+      "desc": "",
+      "icon": "por_vinho_porto",
+      "group": "group_4",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a Decision in the situation allowing you to turn any location into wine RGO at the cost of 100 gold\n\n\nGives a Custom priviledge to the burghers that grant them 25% power and 10 happiness and in every location with wine rgo 100% local burgher estate power\n\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "More than 20 total wine production in the country",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_5",
+      "name": "Rights of The Metiers",
+      "desc": "",
+      "icon": "banking_advance",
+      "group": "group_4",
+      "requires": [
+        "senvm_fof_aqn_3",
+        "senvm_fof_aqn_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a decision that can be repetet up to 10 times that uses 10 authority and raises development in a location by 1. Must be an urban location\n\n\nGrant a governemtn reform that rants -10% global production effecientcy but on every location with one of the following town rights it gives a production effecientcy bonus to the goods that match the townright of 20%\ntooling_charter, royal_tooling_rights (tools)\njewelry_charter, royal_jewelry_rights (jewelry; jewelry guild building levels)\nnaval_charter, royal_naval_rights (naval supplies; tar)\ntextile_charter, royal_textile_rights (cloth; fine cloth; dyes)\nweaponry_charter, royal_weaponry_rights (weaponry; firearms; cannons)\nbook_charter, royal_book_rights (paper; books; dyes)\nartisan_charter, royal_artisan_rights (furniture; pottery; leather)\nbrewing_charter, royal_brewing_rights (liquor; beer; wine)\nmasonry_charter, royal_masonry_rights (masonry; glass)\nmasonry_charter (masonry; glass)",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has more than 10 urban rights in the country",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_6",
+      "name": "Trading hub",
+      "desc": "",
+      "icon": "minting_trade_range_trad_building",
+      "group": "group_4",
+      "requires": [
+        "senvm_fof_mission_67",
+        "senvm_fof_aqn_1",
+        "senvm_fof_aqn_5"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "sclaing Trade range \n+75% at 10 market places and +200% at 20 market places",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "More than 10 market places in bordeaux",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_7",
+      "name": "Expansion of Production",
+      "desc": "",
+      "icon": "national_trade",
+      "group": "group_4",
+      "requires": [
+        "senvm_fof_aqn_5",
+        "senvm_fof_mission_69"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Gains a 20 year decaying modifier that grans 1% production effeciency per wine output\ngain 1 development per wine output in the country.Spread out evenly",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "more than 40 total wine production",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_aqn_9",
+      "name": "Economic Eclipse",
+      "desc": "",
+      "icon": "tuscan_physiocratic_reforms",
+      "group": "group_4",
+      "requires": [
+        "senvm_fof_aqn_7",
+        "senvm_fof_aqn_6",
+        "senvm_fof_mission_66",
+        "senvm_fof_mission_70"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "You lose the modifier from senvm_fof_aqn_7 if you still have it \n\nGains a modifier that grants global production effeciency \nscaling with the total number of urban rights in the country\nmaxes out at 100 urban rights giving 15% production effeciency\n\n\nAnnexes france and vassalises her vassals",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "More Tax base than France proper",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_1",
+      "name": "Silver of Saint Gerand",
+      "desc": "",
+      "icon": "debt_and_loans",
+      "group": "group_5",
+      "requires": [
+        "senvm_fof_bou_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Gives silver output 50% on the location ",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "st_gerand rgo size larger than or equal to 6 and has a bailif in the location",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_2",
+      "name": "Emminent Authority",
+      "desc": "",
+      "icon": "renaissance_subject_opinions_advance",
+      "group": "group_5",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "The mechanic is that they can steel the vassals of other french countries using authority\nthey gain authority by producing high class goods: jewlery, furniture, fine cloth",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has a royal_court in the capital\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_3",
+      "name": "Friends of the Court",
+      "desc": "",
+      "icon": "crown_power_advance_renaissance",
+      "group": "group_5",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Upper class population capacity = 0.15",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Has at least 5 towns\nor\n1 city ",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_4",
+      "name": "Vivre Noblement",
+      "desc": "",
+      "icon": "hun_strengthened_towns",
+      "group": "group_5",
+      "requires": [
+        "senvm_fof_bou_3"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a government reform that gives \n\nglobaly:\nIncreases the population demand for fine cloth, jewlery, and furniture by 30% (global_fine_cloth_pop_demand)\n\n\nin locations with more than 80% control:\nNoble power - 50%\nlocal_nobles_desired_pop_scaled = 0.005\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Total amount of building producing fine cloth, jewlery, and furniture is above 12",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_5",
+      "name": "A taste for Power",
+      "desc": "",
+      "icon": "geo_georgian_titles",
+      "group": "group_5",
+      "requires": [
+        "senvm_fof_mission_69",
+        "senvm_fof_bou_4"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "replaces modifer from senvm_fof_bou_3 giving the same modifier but now scaled with a total production of fine cloth, furniture, \nModifier is the same at 24 and then scales to 1.5x at 48 and 2x at 100 (linear scaling between the 2 threshholds)",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Total amount of building producing fine cloth, jewlery, and furniture is above 24",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_6",
+      "name": "[Millitary Decree; Wealth of the Crown}",
+      "desc": "",
+      "icon": "bohemian_imperial_standing",
+      "group": "group_5",
+      "requires": [
+        "senvm_fof_mission_67",
+        "senvm_fof_mission_66",
+        "senvm_fof_bou_1"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Name depends on if you have taken \"Rise to Power\" or \"Riches of France\" Name before you have picked either should be in red: \"Variable Decree\" the reward section should then explain that you either get 1 or the other\n\nMilitary Decree: Gives a government reform\n10% production effecientcy in locations with more than 90 contorl\nspecifcally effecientcy for \n - tools\n - weaponry\n - firearms\n - cannons\nalso local_nobles_desired_pop_scaled = 0.0075\nlocal_upper_class_capacity_modifier = 0.3\n\nWealth of the Crown: gives a goverment reform\n10% production effecientcy in locations with more than 90 contorl\nspecifcally effecientcy for \n- jewlery\n- furniture\n- fine cloth\nalso local_nobles_desired_pop_scaled = 0.0050\nlocal_upper_class_capacity_modifier = 0.3",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "if militaray decree (\nregular army size 5 + 100% of starting value\nor\nmore than 90 aristocracy\n)\nelse (\nmore than 50 individualism\nor\nyou can your vassals own 70 locations in french region\n)\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bou_9",
+      "name": "Bow to the New King",
+      "desc": "",
+      "icon": "late_feudal_relations",
+      "group": "group_5",
+      "requires": [
+        "senvm_fof_bou_6",
+        "senvm_fof_bou_5",
+        "senvm_fof_mission_70"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "You annex France and vassalise her vassals\ngain a local govenor slot\ngain 20 years of diplomatic_annexation_efficiency = 1",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "You and your vassals control more territory than france does",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_1",
+      "name": "The Military Corridor",
+      "desc": "",
+      "icon": "defense_of_the_faith",
+      "group": "group_6",
+      "requires": [
+        "senvm_fof_mission_66",
+        "senvm_fof_bur_5"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "REQUIRED\n  Le Chemin de Nancy: Nancy\n    Needs: Nancy is connected to our capital by road.\n    Gives: +5% maximum control in Nancy.\n \nOPTIONAL\n  Le Passage de Toul: Toul\n    Needs: a Castle in Toul.\n    Gives: +10% fort defence in Toul.\n \n  Les Murs de Metz: Metz\n    Needs: City Walls in Metz.\n    Gives: +0.3 garrison size in Metz.\n \n  Les Forges de Longwy: Longwy\n    Needs: Longwy's iron production at level 4; Local Smelters in Longwy.\n    Gives: +20% iron output in Longwy.\n \n  Le Sel du Saulnois: Vic-sur-Seille\n    Needs: Vic-sur-Seille's salt production at level 4.\n    Gives: +20% salt output in Vic-sur-Seille.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_3",
+      "name": "Flemmish Affluence",
+      "desc": "",
+      "icon": "ori_refined_cloth_production",
+      "group": "group_6",
+      "requires": [
+        "senvm_fof_bur_7",
+        "senvm_fof_mission_70"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "REQUIRED\n  La Route de Lille: Lille\n    Needs: Lille is connected to our capital by road.\n    Gives: Lille becomes a proximity source of 10.\n \nOPTIONAL\n  Les Tisserands de Gand: Ghent\n    Needs: Ghent's wool production at level 4; a Cloth Guild in Ghent.\n    Gives: +20% cloth output in Ghent.\n \n  La Halle d'Ypres: Ypres\n    Needs: a Cloth Guild and a Marketplace (or better) in Ypres.\n    Gives: +20% cloth output in Ypres.\n \n  La Bourse de Bruges: Bruges\n    Needs: a Counting House and a Wharf in Bruges.\n    Gives: +20% cloth output in Bruges.\n \n  Le Hareng d'Ostende: Ostend\n    Needs: Ostend's fish production at level 4; a Fishing Village in Ostend.\n    Gives: +1% population growth for 10 years in every location we own in Flanders, about +10% population.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_4",
+      "name": "The Matter of Heritage",
+      "desc": "",
+      "icon": "cultural_ties",
+      "group": "group_6",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Annexes the rest of the burgundy_area\n\nSince the different faction countries dont have to care about the other factions that space should instead be occupied by a mechanic about generating authority \n\nUnlocks the 'SOUVERAINETÉ' mechanic in the situation. That is a progress bar with decisions and french Ire.  \nThe Duke of Burgundy is a peer of France, a vassal of its king, and richer than his master. Every homage he pays is a reminder of a crown that is not his. Sovereignty measures how far the duchy has slipped from the king's grasp: in its courts, its coin, its marriages and its lands.\n \n \nHOW IT WORKS\n \nSovereignty runs from 0 to 100. It is shown in the Our Cause section of the Fate of France while we are a subject of France. The bar is blue while we are still working towards it, and turns gold when it reaches 100.\n \nAt 100 we may proclaim our sovereignty and leave the French crown's authority for good.\n \nSovereignty rises in two ways: a little every month, and through the decisions below. France can push it back with decisions of its own.\n \n \nTHE MONTHLY GAIN\n \nEvery month our Sovereignty rises by:\n \n  0.02, plus 0.08 times our share of the Burgundian lands.\n \nThe Burgundian lands are the 112 locations of Burgundy, Lorraine, Franche-Comté, Wallonia, Flanders and Alsace. Holding 14 of them gives about 0.36 a year. Holding 101 gives about 1.1 a year.\n \n  - The gain is doubled while France is at war with anyone other than us. A king at war needs his dukes.\n  - There is no gain while we are at war with France.\n \nBuying provinces in the Burgundian lands raises our share, and so speeds the monthly gain. Every province we buy from France or one of its subjects raises Crown Ire by 2.\n \n \nCROWN IRE\n \nMany of our decisions raise Crown Ire. If it reaches 100, France moves to crush us. Our Ire never falls by itself, so it can only be lowered by decisions: La Paix d'Arras and Feindre la Loyauté.\n \n \n------------------------------------------------------------\nOUR DECISIONS\n------------------------------------------------------------\n \nProclamer la Souveraineté\nProclaim Our Sovereignty\n  The duke answers to God alone.\n  Requires: Sovereignty at 100.\n  Effect: we are no longer a subject of France.\n \nRefuser l'Hommage\nRefuse Homage\n  Each new king expects the duke on his knees. Let him wait.\n  Cost: 25 authority.\n  Effect: Sovereignty +8. Crown Ire +15.\n  Once for each King of France.\n \nLe Ressort de Malines\nThe Court of Mechelen\n  Appeals from our lands will no longer be heard in Paris, but at our own court.\n  Cost: 30 authority.\n  Effect: Sovereignty +10. Crown Ire +10.\n  Once. Requires the Age of the Renaissance.\n \nBattre Monnaie Ducale\nStrike a Ducal Coin\n  A duke who mints his own coin need not borrow the king's.\n  Cost: 10 authority.\n  Effect: Sovereignty +1.5. Crown Ire +3. We gain gold. France's inflation rises.\n  Once every 5 years.\n \nLes Terres d'Empire\nThe Lands of the Empire\n  What we hold of the Emperor, the King cannot command.\n  Cost: 15 authority.\n  Effect: Sovereignty +8 times our share of locations that lie outside France. Crown Ire +3.\n  Once every 10 years.\n \nLe Mariage d'Outre-Rhin\nA Marriage Beyond the Rhine\n  A crown across the Rhine is a friend the King of France cannot overrule.\n  Cost: 10 authority.\n  Requires: a royal marriage with a ruling house outside France.\n  Effect: Sovereignty +5. Crown Ire +5.\n  Once for each such house.\n \nLa Paix d'Arras\nThe Peace of Arras\n  The king needs us more than he hates us. Name the price of peace.\n  Cost: 20 authority.\n  Requires: France is at war with a country other than us.\n  Effect: Crown Ire −25.\n  Once every 10 years.\n \nFeindre la Loyauté\nFeign Loyalty\n  Kneel, smile, and send a gift to Paris.\n  Cost: gold.\n  Effect: Sovereignty −3. Crown Ire −10.\n  Once every 3 years.\n \n \n------------------------------------------------------------\nFRANCE'S DECISIONS\n------------------------------------------------------------\n \nExiger l'Hommage\nDemand Homage\n  The new duke will kneel, as his fathers knelt.\n  Cost: 25 prestige.\n  Effect: the Duke's Sovereignty −5.\n  Once for each Duke of Burgundy.\n \nL'Appel au Parlement\nAppeal to the Parlement\n  Any subject of the duke may still appeal to the king's justice in Paris.\n  Cost: gold.\n  Effect: the Duke's Sovereignty −4.\n  Once every 15 years. Unavailable once the Duke has established Le Ressort de Malines.\n \nAcheter le Conseil\nBuy the Council\n  Every ducal councillor has a price, and the king can pay it.\n  Cost: gold.\n  Effect: the Duke's Sovereignty −2.\n  Once every 15 years.\n \nCrackdown\n  Our existing Crackdown, used against the Independentists, also lowers the Sovereignty of every Independentist member by 15.\n ",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "every country in the burgundry area (except ourselves) has more than 100 opinion of us",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_5",
+      "name": "Art of the Borderland",
+      "desc": "",
+      "icon": "multicultural_empire",
+      "group": "group_6",
+      "requires": [
+        "senvm_fof_bur_6",
+        "senvm_fof_mission_67"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "REQUIRED\n  La Route d'Ensisheim: Ensisheim\n    Needs: Ensisheim is connected to our capital by road.\n    Gives: +5% maximum control in Ensisheim; +1 maximum artists.\n \nOPTIONAL\n  La Grande Saline: Salins-les-Bains\n    Needs: Salins's salt production at level 5.\n    Gives: +20% salt output in Salins-les-Bains; +1 maximum artists.\n \n  Le Col de Jougne: Pontarlier\n    Needs: a Castle in Pontarlier.\n    Gives: +10% fort defence in Pontarlier; +1 maximum artists.\n \n  Les Châteaux du Sundgau: Ferrette\n    Needs: a Castle in Ferrette and a Castle in Belfort.\n    Gives: +10% fort defence in Ferrette; +1 maximum artists.\n \n  Le Vignoble d'Alsace: Colmar\n    Needs: a Winery in Colmar; Zabern's wine production at level 4.\n    Gives: +20% wine output in Colmar; +1 maximum artists.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_6",
+      "name": "The Ducal Heartland",
+      "desc": "",
+      "icon": "saharan_gold_trade",
+      "group": "group_6",
+      "requires": [
+        "senvm_fof_mission_68",
+        "senvm_fof_gk_destroy_pretenders"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "\nAllows Bugundry to purchase provinces at the cost of 20x province_tax_base\nThe Provinces avaiable for purchase are provinces in the following areas \nburgundy_area  lorraine_area wallonia_area flanders_area\nfranche_comte_area and alsace_area\nthe cost is halved if the target country has more than 100 opinion of us\nwhile the AI will never open a mission tree so they will never do this. IF any country has started the fate of france situation the The burgudnian expension should be simulated anyway. \n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "HOW THESE MISSIONS WORK\n \nEach of these missions has one required quest: a road from a named location to our capital. Once that road is built and the location is ours, the mission can be taken.\n \nAll other quests are optional. Each one that is fulfilled when we take the mission pays its reward. Each one that is not is lost for good: it cannot be fulfilled later. A quest whose location we do not own cannot be fulfilled. We choose when to take the mission. Taking it early is quicker; waiting pays more.\n \nEvery fulfilled quest, the road included, also gives:\n  - +2.5 development in its location\n  - +0.0075 monthly manpower in its location\n  - +10 authority to our faction in the Fate of France, if we belong to one\n \nArtistic Development: the maximum development of the Artistic Development cabinet action is 24 + 0.5 for every quest fulfilled across all five missions: 37 if all 26 are fulfilled. Each mission we take raises it by 0.5 for every quest fulfilled when we take it. It is never lowered by these missions.\n\nREQUIRED\n  La Route de l'Yonne: Auxerre\n    Needs: Auxerre is connected to our capital by road.\n    Gives: +10% market access in Auxerre.\n \nREQUIRED\n  Le Clos de Vougeot: Beaune\n    Needs: Beaune's wine production at level 5.\n    Gives: +20% wine output in Beaune.\n \n  Le Port de Chalon: Chalon-sur-Saône\n    Needs: Chalon's wine production at level 4; a Winery in Dijon.\n    Gives: +20% wine output in Chalon-sur-Saône.\n \n  Cluny: Mâcon\n    Needs: a Monastery in Mâcon; Mâcon's wine production at level 4.\n    Gives: +20% wine output in Mâcon.\n \n  Le Safran de Dijon: Dijon\n    Needs: Dijon's saffron production at level 4.\n    Gives: +20% saffron output in Dijon.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_7",
+      "name": "Metals of the Meuse",
+      "desc": "",
+      "icon": "nav_an_industrious_folk",
+      "group": "group_6",
+      "requires": [
+        "senvm_fof_mission_69",
+        "senvm_fof_bur_6"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "REQUIRED\n  La Route de Luxembourg: Luxembourg\n    Needs: Luxembourg is connected to our capital by road.\n    Gives: Luxembourg's raw material becomes gold.\n \nOPTIONAL\n  Le Charbon du Borinage: Mons\n    Needs: Mons's coal production at level 4.\n    Gives: +20% coal output in Mons.\n \n  Les Armuriers de Liège: Liège\n    Needs: a Weapon Guild in Liège.\n    Gives: +20% weaponry output in Liège.\n \n  Le Fer de Namur: Namur\n    Needs: Namur's iron production at level 4; a Tools Guild in Namur.\n    Gives: +20% iron output in Namur.\n \n  La Calamine du Limbourg: Limbourg\n    Needs: Limbourg's lead production at level 4; Local Smelters in Limbourg.\n    Gives: +20% lead output in Limbourg.\n \n  Le Marbre noir de Dinant: Dinant\n    Needs: Dinant's marble production at level 4; a Mason in Dinant.\n    Gives: +20% marble output in Dinant.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_bur_9",
+      "name": "Betweem Two Realms",
+      "desc": "",
+      "icon": "bur_between_two_realms",
+      "group": "group_6",
+      "requires": [
+        "senvm_fof_bur_1",
+        "senvm_fof_bur_3"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Unlocks the developmenbt cabinet action from base IH but the maximum value here is scaled by amount of completed quests",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "You must be independdent",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_1",
+      "name": "The Realm of the Knights",
+      "desc": "",
+      "icon": "mounted_people",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Since the different faction countries dont have to care about the other factions that space should instead be occupied by a mechanic about generating authority \n\nUnlocks realm of knighst mechanic for Anjou in the situation tab\nAnjou Gains 15 monthly manpower for each province that they have \nThey should be able to have a decision that allows them to generate wargoals on other countries. It should cost authority and create ire. Countries they can generate on by order\n- maine MIE (their own vassal)\n- Vendome VDM\n- alencon ALE and their vassal perche PRC\n- Mortain MRT\n- Brittany BRI\nthe normal take land that you have influence in should not be visible for them\n\nadditionally Anjou should be able to start crusasedes.\nHere they should have a Crusader Army Size: [Number] in a large font showing the current size of their crusader army (they start with 5)\nWhen Anjou selects the \"Crusade\" button they first select a muslim country with miniumm 1 coastal location and then a coastal location within that country. The Coastal location must be in europe continent or north africa sub continent or middle east sub continent\n2 months after a country gets selected by anjou they should get an event that they wil be Raided by Anjou and should reduce their opinion of Anjou and then a choice that in 2 months an anjou army will arive on their shores or they pay off anjou with 0.5 a year worth of income. This option should not be picked by ai\nduring that time anjou has a progress bar\nAfter the 4 months anjou declares war on the country and they spawn an army of their custom units equal to the Crusader Army Size variable in the selected location. The created unit should have a unit modifier giving 100% siege ability. The wargoal should not allow transfer of territory or vassalisation and both sides should get blocked_from_peace = yes modifier\n\nThe war should last 2 years and then end \nevery month anjou should get ducats 1 for each 10000 population in locations that they have occupied. theese occupied locations should loose 1 prosperity per month\nFor the duration of the war anjou should have a new progress bar showing the remaing legnth of hte war\nif Anjou wins they increase their Crusade army size by 1\nEither way when the war end anjou looses all armies outside of france region continent and if anjou won Anjou should gain 10 authority and extra up to 20 authority based on teh avera experience_percentage of the army that gets sent away\n3 year cooldown after vicotry 5 after defeat  either way 10 year cooldown per country",
+      "manual_index": 3,
+      "blocks": {
+        "visible": "",
+        "enabled": "has researched medival_military",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_2",
+      "name": "Professionalised Soldiers",
+      "desc": "",
+      "icon": "land_morale_movement_cost_rev_choice_mil",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "combined_bonus_per_type = 0.025",
+      "manual_index": 1,
+      "blocks": {
+        "visible": "",
+        "enabled": "infantry units 2 or more\nand\n2 auxillery \n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_3",
+      "name": "Chivalrous Heritage",
+      "desc": "",
+      "icon": "geo_legacy_of_saint_george",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "army_heavy_cavalry_power = 0.15",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Heavy cavalry units 3 or more",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_5",
+      "name": "Leading from the Front",
+      "desc": "",
+      "icon": "military_traditions",
+      "group": "group_7",
+      "requires": [
+        "senvm_fof_amg_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "train_general_ability = 20\narmy_initiative = 0.2\ncombat_speed_modifier = 0.5\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_6",
+      "name": "Recall the Crusaders",
+      "desc": "",
+      "icon": "crusader_tradition",
+      "group": "group_7",
+      "requires": [
+        "senvm_fof_amg_3"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "End the crusades mechanic but you permanently increase you amount of special heavy cavalry modifier by the crusader army size\n\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Crusader army size must be at least 20",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_7",
+      "name": "Gendarme Regime",
+      "desc": "",
+      "icon": "fra_gendarmes",
+      "group": "group_7",
+      "requires": [
+        "senvm_fof_amg_1",
+        "senvm_fof_1_1"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Gives a government reform like admiratly regime that changfs teh sucession law to the best genral\n\nalso gives\nland_morale_movement_cost -0.05\ndiscipline 0.05\n1 possible governemt reform\nshould be a major reform",
+      "manual_index": 4,
+      "blocks": {
+        "visible": "",
+        "enabled": "More than 5 of the special units",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_amg_9",
+      "name": "A Feeble King",
+      "desc": "Something like 'France deserves better than the leadership found in [leader of rance]. France needs strength'",
+      "icon": "apetian_house_of_anjou",
+      "group": "group_7",
+      "requires": [
+        "senvm_fof_amg_6",
+        "senvm_fof_amg_7",
+        "senvm_fof_amg_5",
+        "senvm_fof_1_2",
+        "senvm_fof_mission_67",
+        "senvm_fof_mission_66"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Declares war on france with a wargoal good enough to annex every location in 1 war\nGain an equaly good wargoal on every country wiht capital in french region that lasts 7 years\nalso ends the crusade mechanic because this would end the situation but make it clear that this also end the crusade",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Requires 10 of the new unit type \nor\nregular army size of 15",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_2",
+      "name": "",
+      "desc": "",
+      "icon": "skilled_cavalry_raids",
+      "group": "group_8",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_3",
+      "name": "",
+      "desc": "",
+      "icon": "feudalism_advance",
+      "group": "group_8",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_4",
+      "name": "",
+      "desc": "",
+      "icon": "",
+      "group": "group_8",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_5",
+      "name": "",
+      "desc": "",
+      "icon": "",
+      "group": "group_8",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_6",
+      "name": "",
+      "desc": "",
+      "icon": "elan",
+      "group": "group_8",
+      "requires": [
+        "senvm_fof_vof_2",
+        "senvm_fof_vof_3"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "So for this mission to be visible you must not have pick both of vof 4 and vof 5 ",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_7",
+      "name": "",
+      "desc": "",
+      "icon": "french_tradition",
+      "group": "group_8",
+      "requires": [
+        "senvm_fof_vof_4",
+        "senvm_fof_vof_5"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "So for this mission to be visible you must not have pick both of vof 2 and vof 3 ",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vof_8",
+      "name": "",
+      "desc": "",
+      "icon": "fra_expansion_of_france",
+      "group": "group_8",
+      "requires": [
+        "senvm_fof_vof_6",
+        "senvm_fof_vof_7",
+        "senvm_fof_mission_66",
+        "senvm_fof_mission_67",
+        "senvm_fof_mission_69",
+        "senvm_fof_mission_70"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_mission_66",
+      "name": "Army Reorginisation",
+      "desc": "",
+      "icon": "levee_en_masse_advance",
+      "group": "group_9",
+      "requires": [
+        "senvm_fof_gk_destroy_pretenders"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "army initiative = 0.2\ncorrect_box_chance = 0.1\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "regular army size 3 + 100% of starting value",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_mission_67",
+      "name": "Taking God's Side",
+      "desc": "",
+      "icon": "russian_artillery_yard",
+      "group": "group_9",
+      "requires": [
+        "senvm_fof_gk_destroy_pretenders"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "scales based on how much artillery you have. Maxes out at 5 artillery pieces for non france and 15 for france proper top end values\nmilitary_tactics = 0.5\nsige ability = 0.5",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has at least 1 cannon",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_mission_68",
+      "name": "Riches of France",
+      "desc": "",
+      "icon": "fra_reformation_of_taxation",
+      "group": "group_10",
+      "requires": [
+        "senvm_fof_bur_4"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "When PLaying burgundy this mission should be replaced by a differnet mission witht the same enabled and on completion but it should have the tre_komnenos_legacy icon and be called: \"Riches of Lotheringia\"",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "more than 20 indivudualism",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "upgrades every rgo i n the country",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_mission_69",
+      "name": "French Administration",
+      "desc": "",
+      "icon": "government_size_renaissance",
+      "group": "group_10",
+      "requires": [
+        "senvm_fof_mission_68",
+        "senvm_fof_vdu_4"
+      ],
+      "duration_days": 1825,
+      "final": false,
+      "notes": "if playing burgundy this is called \"Frankish Administration\"",
+      "manual_index": null,
+      "blocks": {
+        "visible": "when verdun this is part of the soldiers of the republic visibility group",
+        "enabled": "and \naverage_control_in_home_region >= 0.5\nowns more than 10 locations",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "government size = 1\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_mission_70",
+      "name": "Develop Gothic Architecture",
+      "desc": "",
+      "icon": "utr_city_churches",
+      "group": "group_10",
+      "requires": [
+        "senvm_fof_mission_68",
+        "senvm_fof_vdu_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "when verdun this is part of the soldiers of the Centralisation of Cities",
+        "enabled": "at least 20% +3 more urban locations than starting. DOnt actually show this just show the calculation",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Every town location gains 3 development every city or better gains 5",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_10",
+      "name": "Republican Commune",
+      "desc": "",
+      "icon": "hai_bustling_towns",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 1825,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Verdun is a town or greater",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "annex all of verdunois_province and barrois_province",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_11",
+      "name": "Vive la Republique: [Specilisation]",
+      "desc": "",
+      "icon": "liberty_egalite_fraternity",
+      "group": "group_2",
+      "requires": [
+        "senvm_fof_vdu_8",
+        "senvm_fof_vdu_9"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "the [specilisation] should be chosen based on what type of the 3 they have the most of\nFratenite: Militante\nShould give a location modifier to every location with the town right that gives 10 monthly manpower\nset the character from merit over birth as the leader\n\nEgalite: Civil\nShould give a location modifier to every location with the town right that gives\n5 maximum control\n\nLiberte: \nShould give a location modifier to every location with the town right that gives\n10% peasent enfranchisement \nand then a global modifier giving 3 cultural capacity\n\nThey shuould all cap out at 150 locations of that type ",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Owns at least 80% of france region\n\nverdun shouldn when they select this mission tree gain a bad estate privilege for the nobilyt called incomtent nobles that gives them 100% power and -10 happiness and -10 max tax and also -5 global max control\nit can only be removed if they have more than 100 locations with of of teh 3 urban rights\nthis privilegdge should be removed bnefore being able to take the mission",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_12",
+      "name": "Égalité",
+      "desc": "",
+      "icon": "nav_efficient_bureaucracy",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks an urban right\n\"Equality under the Law\"\n-50% local nobles power\n7.5 local control",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has embranced banking institution\nor \nmore than 40 individualism",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_vdu_13",
+      "name": "Fraternité",
+      "desc": "",
+      "icon": "swiss_oath_of_rutli",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "\nUnlcoks a line of soldiers that like the danish heavy ship line has a limit. This limit though will be decided on how many of the following urban rights you have given out - base minimum amount 3\n\nUnlocks an urban right: \"Brotherhood of the Guard\"\n0.1 extra possible Republican Guard unit type\n0.005 local monthly manpower\n- 0.05 local production effecientcy\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has embraced professional armies institution\nor\nmore than 15 locations",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_1_1",
+      "name": "Offices of Equerries",
+      "desc": "",
+      "icon": "finest_of_horses",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a line of Heavy cavalry like the danish heavy ships (1 per age) they can be very strong\nAdditionally to normal maintance they should ask for 10 horses\nthey should start with a limit of 2 that will later be expanded with variables\nalso swap the rgo in passavant and saumur to horses",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "More than 6 stud farms",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_fof_1_2",
+      "name": "Horses of War",
+      "desc": "",
+      "icon": "raj_marwari_horses",
+      "group": "group_7",
+      "requires": [
+        "senvm_fof_1_1"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Scaling up to 60 total stud famrs and rgo output in horse locations\nmaximum modifiers\nArmy move speed = 0.2\narmy_heavy_cavalry_power = 0.25\n\nadditionally use 1 special heavy cav slot per 10 horses produced in the country (same math) (no cap)",
+      "manual_index": 5,
+      "blocks": {
+        "visible": "",
+        "enabled": "More than 18 stud farms",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [
+    {
+      "id": "excl_2",
+      "name": "vof_choice",
+      "pick": 2,
+      "members": [
+        "senvm_fof_vof_2",
+        "senvm_fof_vof_3",
+        "senvm_fof_vof_4",
+        "senvm_fof_vof_5"
+      ]
+    },
+    {
+      "id": "excl_4",
+      "name": "Choice 4",
+      "pick": 1,
+      "members": [
+        "senvm_fof_amg_2",
+        "senvm_fof_amg_3"
+      ]
+    },
+    {
+      "id": "excl_6",
+      "name": "Choice 6",
+      "pick": 1,
+      "members": [
+        "senvm_fof_vdu_4",
+        "senvm_fof_vdu_2"
+      ]
+    },
+    {
+      "id": "excl_7",
+      "name": "Choice 7",
+      "pick": 1,
+      "members": [
+        "senvm_fof_gk_destroy_pretenders",
+        "senvm_fof_mission_68"
+      ]
+    }
+  ],
+  "hidden_groups": [
+    "group_1",
+    "group_2",
+    "group_4",
+    "group_5",
+    "group_6",
+    "group_7"
+  ]
+}

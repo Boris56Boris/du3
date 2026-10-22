@@ -1,0 +1,2184 @@
+{
+  "format": "eu5-mission-tree/2",
+  "icon_folder": "J:/SteamLibrary/steamapps/common/Europa Universalis V/game/main_menu/gfx/interface/advance",
+  "tree": {
+    "id": "senvm_ll",
+    "name": "Latin Legacy: [LOCALISED NAME)",
+    "icon": "",
+    "repeatable": false,
+    "player_playstyle": "",
+    "chance": 3600,
+    "notes": "",
+    "blocks": {
+      "visible": "",
+      "enabled": "",
+      "select_trigger": "",
+      "on_start": "",
+      "on_completion": "",
+      "on_abort": ""
+    }
+  },
+  "groups": [
+    {
+      "id": "group_1",
+      "name": "base",
+      "color": "#00ff40",
+      "visible": "",
+      "notes": ""
+    },
+    {
+      "id": "group_2",
+      "name": "portugal (pt)",
+      "color": "#e1031e",
+      "visible": "has or had tag for portugal",
+      "notes": ""
+    },
+    {
+      "id": "group_3",
+      "name": "castile (cs)",
+      "color": "#fd5811",
+      "visible": "has or had tag for castile",
+      "notes": ""
+    },
+    {
+      "id": "group_4",
+      "name": "Aragon (ag)",
+      "color": "#ffa215",
+      "visible": "has or had tag for aragon",
+      "notes": ""
+    },
+    {
+      "id": "group_5",
+      "name": "Iberia general (ib)",
+      "color": "#ffd0d0",
+      "visible": "Capital in in iberia reigon",
+      "notes": ""
+    },
+    {
+      "id": "group_6",
+      "name": "north italian (ni)",
+      "color": "#fed33f",
+      "visible": "capital is in northern italy",
+      "notes": ""
+    },
+    {
+      "id": "group_7",
+      "name": "south italian (si)",
+      "color": "#f5ffd0",
+      "visible": "has or had tag for naples or sicili",
+      "notes": ""
+    },
+    {
+      "id": "group_8",
+      "name": "italian general (it)",
+      "color": "#ffff80",
+      "visible": "Capital is in italy region",
+      "notes": ""
+    },
+    {
+      "id": "group_9",
+      "name": "latin (ln)",
+      "color": "#f900ff",
+      "visible": "this is visible for italian countries and aragon",
+      "notes": ""
+    }
+  ],
+  "missions": [
+    {
+      "id": "senvm_ll_base_1",
+      "name": "",
+      "desc": "",
+      "icon": "",
+      "group": "group_1",
+      "requires": [
+        "senvm_ll_it_start",
+        "senvm_ll_ib_frontiers_of_iberia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_base_2",
+      "name": "",
+      "desc": "",
+      "icon": "",
+      "group": "group_1",
+      "requires": [
+        "senvm_ll_base_1",
+        "senvm_ll_ig_port_wine",
+        "senvm_ll_ib_leon",
+        "senvm_ll_ib_extramadura",
+        "senvm_ll_ib_toledo"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_mare_nova",
+      "name": "Mare Nova",
+      "desc": "",
+      "icon": "por_establishment_portuguese_navy",
+      "group": "group_2",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants the ability to discover hire explores and all relevant exploration buffs like open ocean exploration",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_a_string_of_pearls",
+      "name": "String of Pearls",
+      "desc": "",
+      "icon": "tnk_pearls_of_india",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_mare_nova"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants a new building that can only be built in the capital giving 10 monthly ducats like the danish building does. The building level will increase for each of a set of locations that portugal owns.",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_following_the_sun",
+      "name": "Following the Sun",
+      "desc": "",
+      "icon": "accounts_of_the_atlantic_voyage",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_mare_nova"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_turning_the_cape",
+      "name": "Turning the Cape",
+      "desc": "",
+      "icon": "export_building_country_advance",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_a_string_of_pearls"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants a local location modifier to the most populated owned coastal location in the cape of good hope area that grants 80 proximity\nAnd a 10 year limited time location modifier to the cape of good hope area that grants assimiliation and conversion",
+      "blocks": {
+        "visible": "",
+        "enabled": "Owns a coastal location in the cape of good hope region",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ports_of_trade",
+      "name": "Ports of Trade",
+      "desc": "",
+      "icon": "port_cost_distance_from_capital_choice_mil",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_a_string_of_pearls"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants a location modifier to the same set of locations as the building from the string of pearls. \nthe localtion modifier should grant local_merchatn_capacity and local merchant power",
+      "blocks": {
+        "visible": "",
+        "enabled": "must own at least 5 of the locations from string of pearls",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_a_road_to_india",
+      "name": "A Road to India",
+      "desc": "",
+      "icon": "hindu_empires",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_turning_the_cape",
+        "senvm_ll_ports_of_trade"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants a local modifier that grants assimilation speed and 80  control to up to 3 most populous locations in india",
+      "blocks": {
+        "visible": "",
+        "enabled": "owns a location in india",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_spice_must_flow",
+      "name": "Spice Must Flow",
+      "desc": "",
+      "icon": "global_trade_advance",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_a_road_to_india",
+        "senvm_ll_ib_north_port"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Grants trade buffs.\nConverts some of the locations of indian subjets to rgos of various spices",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_pt_carribean",
+      "name": "Caribbean Conquest",
+      "desc": "",
+      "icon": "por_establishment_portuguese_navy",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_following_the_sun"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "owns a location in the carribean",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 5
+    },
+    {
+      "id": "senvm_ll_pt_develop_the_sugar_industry",
+      "name": "Develope Sugar",
+      "desc": "",
+      "icon": "makaron_nisoi_advance",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_carribean"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Converts up to 12 of owned locations in the carribean to sugar rgo ",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 5
+    },
+    {
+      "id": "senvm_ll_pt_colonial_settlements",
+      "name": "Colonial Settlements",
+      "desc": "",
+      "icon": "west_african_caravan_stop_advance",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_carribean"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "grants large (10x over 30 years) population growth and assimilation speed to all new world colonies",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 5
+    },
+    {
+      "id": "senvm_ll_pt_new_world_empire",
+      "name": "New-World Empire",
+      "desc": "",
+      "icon": "por_colonial_governors",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_pt_colonial_settlements",
+        "senvm_ll_pt_develop_the_sugar_industry",
+        "senvm_ll_ib_north_port"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Country becomes an empire\nUnlocks a new building \"Colonial Governor\" that is like naval govenor except it can only be built on on north and south america and it grants 70 proximity\nIt should use up naval governor capacity.\ngive 1 naval governor capacity",
+      "blocks": {
+        "visible": "",
+        "enabled": "has more than 50 locations in americas continent",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 2
+    },
+    {
+      "id": "senvm_ll_cs_a_southeren_outlook",
+      "name": "Southern Outlook",
+      "desc": "",
+      "icon": "tre_lessons_of_the_fourth_crusade",
+      "group": "group_3",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "requires teh capital to be in servilla \nGrants population growth in the province",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_cs_inward_focus",
+      "name": "Inward Focus",
+      "desc": "",
+      "icon": "preaching_friars",
+      "group": "group_3",
+      "requires": [],
+      "duration_days": 3650,
+      "final": false,
+      "notes": "while the mission is progressing grants a local modifier that gives 4 development to every urban location over the course of 12 years given through the monthly development modifier. The modifier cannot be given to urban locations that have the modifier already",
+      "blocks": {
+        "visible": "",
+        "enabled": "more than 15 ubran locations ",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "town_upgrade_cost_modifier = 1",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_finishing the reconquista",
+      "name": "Continue the Reconquista",
+      "desc": "",
+      "icon": "power_projection_advance_2",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_a_southeren_outlook"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "granada no longe exist",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Grants global population conversion speed for 40 years in the country",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ag_nostra_mar",
+      "name": "Nostra Mar",
+      "desc": "",
+      "icon": "ara_constellation_cities",
+      "group": "group_4",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants a wargoal on sicilily, corsica, and sardinia\ninvolved countries\ngenoa GEN\narboria ARB\nsicili SIC",
+      "blocks": {
+        "visible": "",
+        "enabled": "regular_navy_size >= 30\nhas more than 2 heavy ships",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_cs_merino_wool",
+      "name": "Merino",
+      "desc": "",
+      "icon": "vivaro_alpine_drailles",
+      "group": "group_3",
+      "requires": [
+        "senvm_cs_inward_focus"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "has at least 30 total production of wool in the countyr",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Gives grants a local modifier given local rgo size of an extra 2.5 for every owned location that procues more than 4 wool",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 6
+    },
+    {
+      "id": "senvm_ll_cs_agricultural_society",
+      "name": "Agricultural Society",
+      "desc": "",
+      "icon": "folwark_system",
+      "group": "group_3",
+      "requires": [
+        "senvm_cs_inward_focus"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "produces at least 250 total rgo production of the country of any type",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Grants development to every owned location in europe equal to half its rgo output\nonly on locations with a farming goods_method",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 6
+    },
+    {
+      "id": "senvm_ll_cs_beyond_the_peninsula",
+      "name": "Beyond the Peninsula",
+      "desc": "",
+      "icon": "atlantic_trade_routes",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_finishing the reconquista"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "has integrated the new granadese pronvinces",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Grants a custom causus beli on morroco that is like the death of the teutons wargoal.",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_cs_integrating_mauretania",
+      "name": "Integrating Mauritania",
+      "desc": "",
+      "icon": "ach_villehardouins_valor_advance",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_beyond_the_peninsula"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "Must have at least 50% control on 20 locations in north africa\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Gives limited time location modifier that converts and assimilates \nyou this modifier can be reused throughout the mission tree so the game does not need a new line item for each mission",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_cs_a_new_crusade",
+      "name": "A New Crusade",
+      "desc": "",
+      "icon": "reform_the_ecclesiastical_authorities",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_beyond_the_peninsula"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants a temperorary (50 years) modifier with damage against heathens (starting at 20%) and monthly manpower (starting at 50) \nthe modifier will then scale with 5% of the base for every catholic country with more than 150 opinion of castile. the countries are weighed by population adn each 1 million pops represetns 1 country\nThis modifier like all other scaling modifiers is only scaled when it is picked",
+      "blocks": {
+        "visible": "",
+        "enabled": "has positive relations with the papal states\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_cs_monuments_to_god",
+      "name": "Monuments to God",
+      "desc": "",
+      "icon": "geo_beacon_of_christianity",
+      "group": "group_3",
+      "requires": [
+        "senvm_cs_inward_focus"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "has more than 20 temples",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Grants a monument (work of art) in every location with a temple (see ih mission tree)",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 6
+    },
+    {
+      "id": "senvm_ll_cs_arstistic_santuary",
+      "name": "Artistic sanctuary",
+      "desc": "",
+      "icon": "genoese_school",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_monuments_to_god",
+        "senvm_ll_cs_agricultural_society"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "Has more than 10 theaters",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "grants a modifier increasing the number of artists scaling with the number of theathers capping out at 35 theaters. The maxium should be like the maximum artits buff from the base mission IH mission tree",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 6
+    },
+    {
+      "id": "senvm_ll_cs_native_cloth_industry",
+      "name": "Native Cloth Industry",
+      "desc": "",
+      "icon": "guj_hub_of_the_indian_ocean_trade",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_merino_wool",
+        "senvm_ll_cs_agricultural_society"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "has more than 30 buildings that produce cloth",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "grants a modifier granting global cloth production of 10% \nand development in every location equal to a quater of its total cloth producing buildings",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 6
+    },
+    {
+      "id": "senvm_ll_cs_eternal_reconquista",
+      "name": "Eternal Reconquista",
+      "desc": "",
+      "icon": "on_hubris_and_morality_advance",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_a_new_crusade",
+        "senvm_ll_cs_integrating_mauretania",
+        "senvm_ll_base_2"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Grants a permanent country modifier that grants 1 naval govenor and permanent assimilation and conversion",
+      "blocks": {
+        "visible": "",
+        "enabled": "Castile and its subjects own 100 locations in north africa",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_cs_humanist_society",
+      "name": "Humanist Society",
+      "desc": "",
+      "icon": "city_of_artists",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_cs_native_cloth_industry",
+        "senvm_ll_cs_arstistic_santuary",
+        "senvm_ll_base_2"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "",
+      "blocks": {
+        "visible": "",
+        "enabled": "copy a humanist check from the IH mission",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Improves every accepted cultures opinion of the primary culture by 1.\nIncreases cultural capcity by 2",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 3
+    },
+    {
+      "id": "senvm_ll_ag_sardinia",
+      "name": "Wool of Sardinia",
+      "desc": "",
+      "icon": "vivaro_alpine_drailles",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ag_nostra_mar"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "location:barcalona gains up to 30% local cloth output at 16 wool on sardinia. THis should be the same modifier as from riches of the coast so make sure that they do jnot overide but instead stack",
+      "blocks": {
+        "visible": "",
+        "enabled": "at least 7 wool production on sardinia_area",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ag_corsica",
+      "name": "Ports of Corsica",
+      "desc": "",
+      "icon": "cha_veteran_shipbuilders",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ag_nostra_mar"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Gives 3x population in cosica over 20 years",
+      "blocks": {
+        "visible": "",
+        "enabled": "has built a port in location:ajaccio and location:bastia",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_sicili",
+      "name": "Control of Sicili",
+      "desc": "",
+      "icon": "sardinian_the_turres_costeras",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ag_nostra_mar"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Naval govenor capacity +1",
+      "blocks": {
+        "visible": "",
+        "enabled": "owns at least 20 locations in sicily_area",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ag_trading_power",
+      "name": "Industrial Power",
+      "desc": "",
+      "icon": "ara_a_maritime_realm",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ag_sardinia",
+        "senvm_ll_ag_corsica",
+        "senvm_ll_ib_arart"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Increase the size of the local production effecientcy modifiers given in the iberia tree by the half amount of development in every location",
+      "blocks": {
+        "visible": "Has picked the iberia path instead of rome path\n",
+        "enabled": "has more than twice total starting development",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": 1
+    },
+    {
+      "id": "senvm_ll_ag_onto_italy",
+      "name": "Onto Italy",
+      "desc": "",
+      "icon": "glory_of_rome",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_sicili",
+        "senvm_ll_ag_sardinia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "gives a wargoal on a good naples and clear their diplomatic relations like teutons\nImproves the opinio of neopilitan and sicilian view of the primary culture to kindred ",
+      "blocks": {
+        "visible": "Has picked the rome path instead of iberia path",
+        "enabled": "regular_army_size >= 13",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ni_conquest_1",
+      "name": "",
+      "desc": "",
+      "icon": "divine_supremacy",
+      "group": "group_6",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "The 3 conquest missions will be dynamic and the targests of the mission will be selected when the mission is picked. Care should be taken such that it selects provinces that are occupied by countries who are not more than twice as strong as the selected country or have an overlord who is. (measured by levy size)\nthe selection process should be as determastic as possible meaning that you can expect the same picks each time you load up a campaign\n\n\nThen each mission will be enabled when the county has taken the selected place\nthe mission will grant local bonuses to the acquired location such as a goods thoughput for that location\nif the country is venice the 3 conquest areas should instead be the 3 important trade ports in the easterne mediteranian that you can purchase at the cost of 300 ducats each\n\nhere is a list of every province\nalessandria_province aosta_province mondovi_province monferrato_province novara_province torino_province saluzzo_province\ncismonte_province levante_province pumonte_province punente_province\nbergamo_province brescia_province cremona_province mantua_province milano_province monza_province pavia_province valtellina_province ticino_province\nbelluno_province friuli_province padua_province venice_province verona_province vicenza_province\nbologna_province ferrara_province modena_province parma_province piacenza_province reggioem_province romagna_province urbino_province\narezzo_province florence_province grosseto_province lucca_province pisa_province siena_province\nmarche_province perugia_province \n\nif the country has less than 15 tax base when the mission tree is generated the missions should give 1000 mercenaries when the mission is selected and grant a wargoal on countries that occopy the province and remove their allies. The bonus to the province should be defered to \nyou should be able to use create_mercenaries effect to create free mercenaries. In this case the mission should require 80 gold and use that when the mission is picked. \n\nif the country has less than 20 tax base they should have get 1 mission like the one for less than 15 tax base\n\nif the country has more than 200k population then it should select at least 1 mission that wants an area (shown in consolitation mission) instead of a province\nif the country has more than 500k population then it should select 3 missions that wants an area (shown in consolitation mission) instead of a province\n\nif the capital is in one of theese provinces: marche_province, urbino_province, romagna_province, bologna_province, ferrara_province\nthen marche_province, urbino_province, romagna_province that are the mission provinces\n",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ni_conquest_2",
+      "name": "",
+      "desc": "",
+      "icon": "bng_bengali_paik",
+      "group": "group_6",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "The 3 conquest missions will be dynamic and the targests of the mission will be selected when the mission is picked. Care should be taken such that it selects provinces that are occupied by countries who are not more than twice as strong as the selected country or have an overlord who is. (measured by levy size)\nthe selection process should be as determastic as possible meaning that you can expect the same picks each time you load up a campaign\n\n\nThen each mission will be enabled when the county has taken the selected place\nthe mission will grant local bonuses to the acquired location such as a goods thoughput for that location\nif the country is venice the 3 conquest areas should instead be the 3 important trade ports in the easterne mediteranian that you can purchase at the cost of 300 ducats each\n\nhere is a list of every province\nalessandria_province aosta_province mondovi_province monferrato_province novara_province torino_province saluzzo_province\ncismonte_province levante_province pumonte_province punente_province\nbergamo_province brescia_province cremona_province mantua_province milano_province monza_province pavia_province valtellina_province ticino_province\nbelluno_province friuli_province padua_province venice_province verona_province vicenza_province\nbologna_province ferrara_province modena_province parma_province piacenza_province reggioem_province romagna_province urbino_province\narezzo_province florence_province grosseto_province lucca_province pisa_province siena_province\nmarche_province perugia_province \n\nif the country has less than 15 tax base when the mission tree is generated the missions should give 1000 mercenaries when the mission is selected and grant a wargoal on countries that occopy the province and remove their allies. The bonus to the province should be defered to \nyou should be able to use create_mercenaries effect to create free mercenaries. In this case the mission should require 80 gold and use that when the mission is picked\n\nif the country has less than 20 tax base they should have get 1 mission like the one for less than 15 tax base\n\nif the country has more than 200k population then it should select at least 1 mission that wants an area (shown in consolitation mission) instead of a province\nif the country has more than 500k population then it should select 3 missions that wants an area (shown in consolitation mission) instead of a province\n\n\n",
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      },
+      "manual_index": null
+    },
+    {
+      "id": "senvm_ll_ni_conquest_3",
+      "name": "",
+      "desc": "",
+      "icon": "expand_varangian_guard_advance",
+      "group": "group_6",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "The 3 conquest missions will be dynamic and the targests of the mission will be selected when the mission is picked. Care should be taken such that it selects provinces that are occupied by countries who are not more than twice as strong as the selected country or have an overlord who is. (measured by levy size)\nthe selection process should be as determastic as possible meaning that you can expect the same picks each time you load up a campaign\n\n\nThen each mission will be enabled when the county has taken the selected place\nthe mission will grant local bonuses to the acquired location such as a goods thoughput for that location\nif the country is venice the 3 conquest areas should instead be the 3 important trade ports in the easterne mediteranian that you can purchase at the cost of 300 ducats each\n\nhere is a list of every province\nalessandria_province aosta_province mondovi_province monferrato_province novara_province torino_province saluzzo_province\ncismonte_province levante_province pumonte_province punente_province\nbergamo_province brescia_province cremona_province mantua_province milano_province monza_province pavia_province valtellina_province ticino_province\nbelluno_province friuli_province padua_province venice_province verona_province vicenza_province\nbologna_province ferrara_province modena_province parma_province piacenza_province reggioem_province romagna_province urbino_province\narezzo_province florence_province grosseto_province lucca_province pisa_province siena_province\nmarche_province perugia_province \n\nif the country has less than 15 tax base when the mission tree is generated the missions should give 1000 mercenaries when the mission is selected and grant a wargoal on countries that occopy the province and remove their allies. The bonus to the province should be defered to \nyou should be able to use create_mercenaries effect to create free mercenaries. In this case the mission should require 80 gold and use that when the mission is picked\n\nif the country has less than 20 tax base they should have get 1 mission like the one for less than 15 tax base\n\nif the country has more than 200k population then it should select at least 1 mission that wants an area (shown in consolitation mission) instead of a province\nif the country has more than 500k population then it should select 3 missions that wants an area (shown in consolitation mission) instead of a province\n\n\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ni_conquest_consolidation_specific",
+      "name": "",
+      "desc": "",
+      "icon": "emilian_the_via_emilia",
+      "group": "group_6",
+      "requires": [
+        "senvm_ll_ni_conquest_1",
+        "senvm_ll_ni_conquest_2",
+        "senvm_ll_ni_conquest_3"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "will grant a bonus depening what area the countries capital was in when they picked the misison\nThe mission can show the bonus that the country can gen an then after have a tooltip that will list every area and their bonus\nFor tuscany region this could be home of the aquaduct that unlocks a new \"Tuscan Aquaduct\" buildin that grants 5 development when its contructed and removes 5 when it is removed\"\nlist of every area\npiedmont - piemonte_area          \nliguria and corsica : liguria_area\nlombardy - lombardy_area\nveneto and fiuli - veneto_area\nemelia and romagna - emelia_area\ntuscany - tuscany_area\nMarche and Umbria - marche_area",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has integrated the 3 new regions and there home area\nadditionally These could be more intersting if its not just ownership but having built something of relvantce her elike a university fabric workshop rgo or so on",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ni_home_of the_rennaissance",
+      "name": "",
+      "desc": "",
+      "icon": "patron_of_art",
+      "group": "group_6",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants 2 development in the entire country\nGrants an artist buff",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Has embraced renaissance institution",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ni_specific_country_bonus",
+      "name": "",
+      "desc": "",
+      "icon": "medici_porcelain",
+      "group": "group_6",
+      "requires": [
+        "senvm_ll_ni_home_of the_rennaissance"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This will have a speicfic country bonus for the country depending on what tag it is \nfor for venice this cuold be masonry output and glass output 30%. It does not all have to be oogds production bonuses and also give development to venice equal to the amount of glass producing buildings\nRavenna could have proximity cost through roads\nI will provice a list of countries and then you can come up with choices for bonuses for each country based on historical reasons. There are a ton of countriesn in nothrn italy at hte start data so it might only be for the top 10 diffent ones and then a generic bonus\nlist of countries\ngenoa GEN\nmilan MLO\npavia PAV\nverona VER\nvenice VEN\naquilea AQU\nferrara FER\nflorence FLO\nsiena SIE\nravenna RAV\nlucca LUC\npisa PIS\nbologna BLG",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "more development than 40% of  starting value plus 50",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ni_urban_dev",
+      "name": "",
+      "desc": "",
+      "icon": "nav_efficient_bureaucracy",
+      "group": "group_6",
+      "requires": [
+        "senvm_ll_ni_home_of the_rennaissance",
+        "senvm_ll_ni_conquest_consolidation_specific"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This mission will have its name be eitehr \"A Modern Republic\" or \"A Modern Monarchy\" Depending on if the country is a monatchy or a republic\nThe republic path will grant 5 development on every urban location in the entire country \nthe monarchy will grant 5% discipline\n",
+      "manual_index": 2,
+      "blocks": {
+        "visible": "",
+        "enabled": "more than 15 urban locations",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_professionalised_soldier",
+      "name": "The Profesional Soldier",
+      "desc": "",
+      "icon": "noble_officers",
+      "group": "group_8",
+      "requires": [
+        "senvm_ll_it_start"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants 40 monthly manpower in the capital",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "regular army size >= 2",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_an_italian_identity",
+      "name": "An Italian Identity",
+      "desc": "",
+      "icon": "ita_connect_the_interior",
+      "group": "group_8",
+      "requires": [
+        "senvm_ll_it_professionalised_soldier",
+        "senvm_ll_it_land_of_wealth"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Has the effect of unifiying the italian culture. This is also done in the under northern lights mission tree so you can see it for how its done",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "At least 3 acceptated cultures are in the italian culture group",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_cultural_hegemon",
+      "name": "Cultural Hegemon",
+      "desc": "",
+      "icon": "system_of_tributaries",
+      "group": "group_8",
+      "requires": [
+        "senvm_ll_it_an_italian_identity",
+        "senvm_ll_it_soldiers_of_the_italian_wars",
+        "senvm_ll_it_artistic_revolution",
+        "senvm_ll_base_2",
+        "senvm_ll_ni_urban_dev",
+        "senvm_ll_ni_specific_country_bonus"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Grants a cultural assimilation speed scaling with amount of theaters in the country\nalso increases the maximum development from the cabinet action and resets the counter to 0. The new maximum will be increased by 10 * %(current proportion of locations with a theater)",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "at least an amount of theaters equal to 50% of starting locations + 10",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_land_of_wealth",
+      "name": "Trickle Down Wealth",
+      "desc": "",
+      "icon": "ita_attractive_migration",
+      "group": "group_8",
+      "requires": [
+        "senvm_ll_it_start"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants 1-5 development in the area of the capital scaling with how much the capital local tax base has grown. 5 being given out if the capital \n\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "The local tax base of the capital has increasedd by 20 + 30% of the original value. You dont need to show the calculation just the reault\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_si_olive",
+      "name": "Boons of the Southern Sun",
+      "desc": "",
+      "icon": "grand_banquets",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "for all\nglobal_olives_pop_demand = 50% - the same for wine fruit and sugar\ngrants a local modifier that gives local_raw_material_output = 0.30 in every farming rgo with mediteranian climate \n\nfor sicily \ngrant a 20%\n\nfor arboria\nthis should give a global_wool_output_modifier = 0.2\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "For naples\nHas more than 12 olive rgo output\n\nfor sicili\nhas mmore than 6 olive rgo output\n\nfor arborea\nhas 5 or more to wine output",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_soldiers_of_the_italian_wars",
+      "name": "Veteran of Italian Wars",
+      "desc": "",
+      "icon": "noble_resilience",
+      "group": "group_8",
+      "requires": [
+        "senvm_ll_it_professionalised_soldier"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Minimum to takee should be armouries count equvalent to 30% of the starting amount of locations",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Grants 1-10% dicipline scaling with armouries. 10% at when the country has an amount of armories equal to their starting locations when they picked the tree + 5",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_artistic_revolution",
+      "name": "Artistic Revolution",
+      "desc": "",
+      "icon": "divine_church_music",
+      "group": "group_8",
+      "requires": [
+        "senvm_ll_it_land_of_wealth"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "Has increased the number of artworks that the country has by 5 since the start of the mission tree",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "should grant a modifier granting max number of artists by 3",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_si_expansion",
+      "name": "",
+      "desc": "",
+      "icon": "piedmontese_the_nebbiolo_vigne",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "For naples this should give sicilian foodstuffs bonus to the capital granting about 33% popgrowth distrubuted over 15 years. THe requirement should be owning all of sicili \n\nFor sicili this should annex all of sardinia_area area. The requirement for taking this mission should be having 4 port buildings\nthis should also apply a population growth modifier to every location in the area giving about 4x population over 30 years\n\nfor arboria this should annex the rest of the sardinia_area area.\nthe requirement should be at least 12 wool output\nthis should also apply a population growth modifier to every location in the area giving about 5x population over 30 years",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_si_expansion_2",
+      "name": "",
+      "desc": "",
+      "icon": "university_naples",
+      "group": "group_7",
+      "requires": [
+        "senvm_ll_si_expansion",
+        "senvm_ll_si_olive"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This should allow sicili to peacefully annex basilicata_area\n\nfor naples\nThis should give naples a naval govenor slot\n\nfor arboria\nthis should annex pumonte_province and cismonte_province and then 4x the population in the area over 25 years",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "for sicili more than 80 tax base\nfor naples this should require ownning 15 more locations in greece than the base amount. This means boths directly and by subjects\nfor arboria this should require more than 30 tax base",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_si_trade_routes",
+      "name": "",
+      "desc": "",
+      "icon": "zmw_merchant_taxes",
+      "group": "group_7",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Increase trade range by 50%\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "has more than 10 market places",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_si_expansion_3",
+      "name": "",
+      "desc": "",
+      "icon": "byz_court_of_languages",
+      "group": "group_7",
+      "requires": [
+        "senvm_ll_si_expansion_2",
+        "senvm_ll_si_trade_routes"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "For sicili this should allow them to annex the rest of naples\nFor naples this should improve the cultural opinion of greek to the primary culture by 1\nfor arboria this should annex sicily_area",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "for naples this should require ownning 50 more locations in greece than the base \nFor sicili this should be having a tax_base higher than naples\nfor arboria this should require more than 30 total wool output",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_si_rural",
+      "name": "",
+      "desc": "",
+      "icon": "rgo_logistics_mil_choice",
+      "group": "group_7",
+      "requires": [
+        "senvm_ll_si_olive"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This should give development spread out to the country. 1.5 devlopment for each rgo production of olives and wine and fruit\nThe capital should additionally gain flat 10 development\nin arboria this should also count wool with a value of 2.5 development per output",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "for naples\nHas more than 30 olive, wine and fruit output i total\n\nfor sicili\nhas more than 15, wine and fruit output i total",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ln_redefining_heritage",
+      "name": "Roads of Rome",
+      "desc": "",
+      "icon": "road_building",
+      "group": "group_9",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Grants proximity cost through roads reduction of 3",
+      "manual_index": 0,
+      "blocks": {
+        "visible": "",
+        "enabled": "Test the amount of loctions connected to the capital when the mission tree lis loaded and then increase this number by 20%",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_it_start",
+      "name": "Towns of Italy",
+      "desc": "",
+      "icon": "dlh_revive_the_tughlaq_architecture",
+      "group": "group_8",
+      "requires": [],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_frontiers_of_iberia",
+      "name": "Industries of Iberia",
+      "desc": "",
+      "icon": "gra_expand_the_frontier",
+      "group": "group_5",
+      "requires": [
+        "senvm_ll_pt_mare_nova"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": 2,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ln_civil_law",
+      "name": "Progenitor of Civil Law",
+      "desc": "",
+      "icon": "byz_reaffirm_synod_powers",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_ln_redefining_heritage"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks a building called \"Civil Law Courthouse\" that grants 2.5% local control and local_pop_assimilation_speed = 0.03\nthe building grants 5 development in every location that it is built and removes 5 when it is destroyed\ncan be built in rural, town, city and megapolis",
+      "manual_index": 0,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ln_prosperity_of_insfrastructure",
+      "name": "Properity of Infrastructure",
+      "desc": "",
+      "icon": "saquiyah",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_ln_civil_law"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": 0,
+      "blocks": {
+        "visible": "",
+        "enabled": "Must have a road in an amount of locations equal to the starting location count",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Gives up to 7 development in every location directly proportional to its proximity to capital",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_lt_roman_restoration",
+      "name": "Roman Restoration",
+      "desc": "",
+      "icon": "rmn_the_descendants_of_trajan",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_ln_redefining_heritage"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Changes the primary culture to a new primary culture that is red on map and part of the iberian italian and french culture group called \"Neo-Roman\"",
+      "manual_index": 1,
+      "blocks": {
+        "visible": "",
+        "enabled": "total development of the country is 40% larger than starting value",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_lt_purchasing_title",
+      "name": "A Title for Sale",
+      "desc": "",
+      "icon": "donation_of_constantine",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_ln_redefining_heritage"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Transfers 500 ducats to Byz. Gives a modifier called \"Rights of an Empire\"\nBecome an empire\n0.1 monthly legitimacy",
+      "manual_index": 2,
+      "blocks": {
+        "visible": "Only visible if byz does not own constantinople \nand ( byz does not have 'has sold rights tag' and the current country does not have the modifier)(meaning somehome else bought it)",
+        "enabled": "byz does not have 'has sold rights tag'\nmust have more than 500 ducats",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ln_roman_institution",
+      "name": "Roman Institutions",
+      "desc": "",
+      "icon": "byz_ancient_greek_studies",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_ln_civil_law"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Etiher called Senatorial Legacy or the Caeasars Legacy depending if the coutnry is a republic or not\nif republic: pop assimilation speed 0.2\nelse: War score effecientcy = 0.2\n\nwoth will give proximity effecintcy 20%",
+      "manual_index": 1,
+      "blocks": {
+        "visible": "",
+        "enabled": "requires the at least 20 of the couthouse buildings",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ln_forums",
+      "name": "Forums",
+      "desc": "",
+      "icon": "epic_poetry_advance",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_ln_prosperity_of_insfrastructure",
+        "senvm_ll_ln_roman_institution"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Unlocks forum building that gives 5 development when placed and removes 5 when removed\nthe forum should also add 1 merhcant capacity and local_pop_assimilation_speed = 0.03\n2.5% local control\ncan be built in town cities and megapolis",
+      "manual_index": 0,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ln_formable",
+      "name": "",
+      "desc": "",
+      "icon": "a_central_power",
+      "group": "group_9",
+      "requires": [
+        "senvm_ll_lt_purchasing_title",
+        "senvm_ll_lt_roman_restoration",
+        "senvm_ll_ln_forums",
+        "senvm_ll_ag_onto_italy",
+        "senvm_ll_ni_urban_dev",
+        "senvm_ll_ni_specific_country_bonus"
+      ],
+      "duration_days": 0,
+      "final": true,
+      "notes": "Form a new country \n\nthis means making a new formable that is invisbile.\nMap colour should be red, The name should be \"Senatus Populusque Romanus\" if a republic and \"Hesperian Empire\" if a monarchy\nthere needs ot be different flags depending on which country formed it you can use check for a variable. Just a flag for italy and a flag for iberia\nthe name of the mission will be the name of the coutnry but wiht ! at the end\ngive developmetn in every location of the correct culture. The amount of developmetn should have a base of 3 and then half the difference between the dev and 25. This should never result in a value below 3",
+      "manual_index": 0,
+      "blocks": {
+        "visible": "",
+        "enabled": "has more than 100 locations of the primary culture.",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_castile",
+      "name": "Castilla",
+      "desc": "",
+      "icon": "cas_reform_of_millones",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_ib_frontiers_of_iberia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 1,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "burgos  [leather]\n  Q  \"Hides of the Meseta\": livestock RGO >= 4 in miranda_de_ebro AND najera\n  R  +5 dev, local_leather_output_modifier = 0.20\n\nvalladolid  [liquor]\n  Q  \"Ribera del Duero\": wine RGO >= 4 in penafiel; market centre building in medina_del_campo\n  R  +5 dev, local_liquor_output_modifier = 0.20\n\nsegovia  [cloth]\n  Q  \"Mesta of Segovia\": wool RGO >= 5 in cuellar AND fuentiduena\n  R  +5 dev, local_cloth_output_modifier = 0.20\n\npalencia  [cloth]\n  Q  \"Looms of the Carrion\": wool RGO >= 4 in carrion_de_los_condes AND monzon_campos\n  R  +5 dev, local_cloth_output_modifier = 0.20\n\navila  [paper]\n  Q  \"Flax and Timber of Avila\": fiber_crops RGO >= 4 in avila; sawmill lvl >= 2 in arevalo AND las_navas\n  R  +5 dev, local_paper_output_modifier = 0.20\n\nsoria  [leather]\n  Q  \"Canada Real\": livestock RGO >= 4 in almazan, arnedo AND calatanazor\n  R  +5 dev, local_leather_output_modifier = 0.20\n\nsantander  [naval_supplies]\n  Q  \"Astilleros of Cantabria\": sawmill lvl >= 2 in laredo; port building lvl >= 3 in santander\n  R  +5 dev, local_naval_supplies_output_modifier = 0.20",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ib_andalusia",
+      "name": "Andalusia",
+      "desc": "",
+      "icon": "bank_of_saint_george",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_ib_frontiers_of_iberia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 2,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "sevilla  [jewelry]\n  Q  \"Silver of the Sierra Morena\": silver RGO >= 5 in constantina; minting_office lvl >= 2 in sevilla\n  R  +5 dev, local_jewelry_output_modifier = 0.20\n\ncordoba  [cannons]\n  Q  \"Bronze of Cordoba\": tin RGO >= 4 in santa_eufemia; bailiff in pedroche\n  R  +5 dev, local_cannons_output_modifier = 0.20\n\nhuelva  [jewelry]\n  Q  \"Rio Tinto\": copper RGO >= 5 in almonaster_la_real; lead RGO >= 4 in aroche\n  R  +5 dev, local_jewelry_output_modifier = 0.20\n\ncadiz  [liquor]\n  Q  \"Sherry of Jerez\": wine RGO >= 5 in arcos_de_la_frontera; port building lvl >= 2 in sanlucar\n  R  +5 dev, local_liquor_output_modifier = 0.20\ngranada  [fine_cloth]\n  Q  \"Alcaiceria\": silk RGO >= 4 in orgiva; bailiff in illora\n  R  +5 dev, local_fine_cloth_output_modifier = 0.20\n\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ig_port_wine",
+      "name": "Port Wine Trade",
+      "desc": "",
+      "icon": "por_vinho_porto",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_ib_frontiers_of_iberia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n\nThis mission should also give a country modifeir that grants 0.3 gold per month for each rgo size in the 3 locations",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "porto  [marketplace]\n  Q  \"Vinho do Douro\": wine RGO size >= 4 in meda, trancoso, lamego\n  R  +5 dev, local_marketplace_building_levels = 2\n     COUNTRY: monthly gold = 0.25 * (wine output meda + trancoso + lamego)",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ig_lisboa",
+      "name": "Lisboan Art",
+      "desc": "",
+      "icon": "por_royal_absolutism",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_ib_frontiers_of_iberia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Create an artwork for every rgo output in the province estremadura_province",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_leon",
+      "name": "Galicia",
+      "desc": "",
+      "icon": "bavarian_coinage",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_ib_castile",
+        "senvm_ib_andalusia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 1,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "oviedo  [tools]\n  Q  \"Asturian Forges\": copper RGO >= 4 in castropol; local_smelters lvl >= 2 in oviedo\n  R  +5 dev, local_tools_output_modifier = 0.20\n\nleon  [beer]\n  Q  \"Granaries of the Esla\": wheat RGO >= 5 in sahagun; windmill lvl >= 2 in mansilla\n  R  +5 dev, local_beer_output_modifier = 0.20\n\nastorga  [jewelry]\n  Q  \"Silver of the Bierzo\": silver RGO >= 4 in villafranca_bierzo; control >= 90 in ponferrada\n  R  +5 dev, local_jewelry_output_modifier = 0.20\n\nsalamanca  [books]\n  Q  \"Studium Salmantinum\": university in salamanca; sawmill lvl >= 2 in bejar\n  R  +5 dev, local_books_output_modifier = 0.20\n\ncoruna  [naval_supplies]\n  Q  \"Fleets of the Atlantic\": sawmill lvl >= 2 in betanzos; port building lvl >= 3 in ferrol\n  R  +5 dev, local_naval_supplies_output_modifier = 0.20\n\nsantiago_compostela  [masonry]\n  Q  \"Granite for the Apostle\": stone RGO >= 4 in tuy; mason lvl >= 2 in lalin AND mellid\n  R  +5 dev, local_masonry_output_modifier = 0.20\n\nourense  [pottery]\n  Q  \"Kilns of the Mino\": clay RGO >= 4 in ribadavia; bailiff in ginzo_de_limia\n  R  +5 dev, local_pottery_output_modifier = 0.20",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_extramadura",
+      "name": "The Hinterlands",
+      "desc": "",
+      "icon": "lub_hanseatic_coins",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_ib_castile",
+        "senvm_ib_andalusia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 2,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "badajoz  [cloth]\n  Q  \"Wool of the Guadiana\": wool RGO >= 4 in jerez_de_los_caballeros; sheep_farms lvl >= 2 in albuquerque\n  R  +5 dev, local_cloth_output_modifier = 0.20\n\nplasencia  [tools]\n  Q  \"Iron of the Jerte\": iron RGO >= 4 in plasencia; bailiff in granadilla\n  R  +5 dev, local_tools_output_modifier = 0.20\nbilbao  [tools]\n  Q  \"Ferrerias of Biscay\": iron RGO >= 5 in bilbao; local_smelters lvl >= 2 in durango\n  R  +5 dev, local_tools_output_modifier = 0.20",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_toledo",
+      "name": "Toledo",
+      "desc": "",
+      "icon": "saharan_gold_trade",
+      "group": "group_3",
+      "requires": [
+        "senvm_ll_ib_castile",
+        "senvm_ib_andalusia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 3,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "madrid  [furniture]\n  Q  \"Timber of the Guadarrama\": sawmill lvl >= 2 in colmenar; bailiff in alcala_de_henares\n  R  +5 dev, local_furniture_output_modifier = 0.20\n\ntoledo  [weaponry]\n  Q  \"Blades of Toledo\": iron RGO >= 5 in toledo; weapon_smith lvl >= 2 in toledo; bailiff in illescas\n  R  +5 dev, local_weaponry_output_modifier = 0.20\n\ncuenca  [leather]\n  Q  \"Serrania Herds\": livestock RGO >= 4 in beteta, canete AND pareja\n  R  +5 dev, local_leather_output_modifier = 0.20\n\nalarcon  [tar]\n  Q  \"Pines of the Jucar\": tar_kiln lvl >= 2 in moya AND requena\n  R  +5 dev, local_tar_output_modifier = 0.20\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_art_1",
+      "name": "Art of the Deal",
+      "desc": "",
+      "icon": "free_trade",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ib_frontiers_of_iberia"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "",
+      "manual_index": null,
+      "blocks": {
+        "visible": "For specifically aragon they can either pick iberia or rome path so theese need to hide when rome is picked",
+        "enabled": "More than 30 trade income",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "Gain 1 artwork in the capital per 2 trade income",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_mission_70",
+      "name": "Goods for the Realm",
+      "desc": "",
+      "icon": "perpetual_general_captain_of_the_people",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_ig_lisboa"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "torres_vedras  [masonry]\n  Q  \"Quarries of the Sizandro\": stone RGO >= 4 in torres_vedras; mason lvl >= 2 in alcobaca\n  R  +5 dev, local_masonry_output_modifier = 0.20\n\nsantarem  [glass]\n  Q  \"Sands of the Sorraia\": sand RGO >= 4 in ponte_sor; rural_glassmaker lvl >= 2 in santarem\n  R  +5 dev, local_glass_output_modifier = 0.20\n\nbeja  [firearms]\n  Q  \"Powder of the Guadiana\": iron RGO >= 4 in odemira; local_smelters lvl >= 2 in ourique\n  R  +5 dev, local_firearms_output_modifier = 0.20\nleiria  [weaponry]\n  Q  \"Pinhal de Leiria\": charcoal_maker lvl >= 2 in leiria; control >= 90 in figueira\n  R  +5 dev, local_weaponry_output_modifier = 0.20\n\nmoncorvo  [cannons]\n  Q  \"Iron of the Douro\": iron RGO >= 5 in moncorvo; tin RGO >= 4 in aguiar\n  R  +5 dev, local_cannons_output_modifier = 0.20\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_north_port",
+      "name": "Highland Wealth",
+      "desc": "",
+      "icon": "por_pursuing_waves",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_mission_72",
+        "senvm_ll_mission_70",
+        "senvm_ll_base_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 1,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "braga  [tar]\n  Q  \"Pine Pitch of the Minho\": tar_kiln lvl >= 2 in barcelos AND valenca\n  R  +5 dev, local_tar_output_modifier = 0.20\n\nguimaraes  [leather]\n  Q  \"Herds of the Ave\": livestock RGO >= 4 in guimaraes; bailiff in viana_do_castelo\n  R  +5 dev, local_leather_output_modifier = 0.20\n\n\n\n\nviseu  [furniture]\n  Q  \"Timber of the Beira\": sawmill lvl >= 2 in besteiros AND seia\n  R  +5 dev, local_furniture_output_modifier = 0.20\n\nlamego  [liquor]\n  Q  \"Aguardente\": own portel AND salvaterra; distillery lvl >= 2 in lamego\n  R  +5 dev, local_liquor_output_modifier = 0.20\n\n\n\ncastelo_branco  [paper]\n  Q  \"Flax of the Ponsul\": fiber_crops RGO >= 4 in proenca_nova; rural_clothmaker lvl >= 2 in idanha\n  R  +5 dev, local_paper_output_modifier = 0.20\n\ncoimbra  [books]\n  Q  \"Estudo Geral\": university in coimbra; paper workshop lvl >= 2 in castelo_branco\n  R  +5 dev, local_books_output_modifier = 0.20\n\nfeira  [tools]\n  Q  \"Forges of Aveiro\": iron RGO >= 4 in feira; local_smelters lvl >= 2 in esgueira\n  R  +5 dev, local_tools_output_modifier = 0.20\n\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_mission_72",
+      "name": "Goods for the people",
+      "desc": "",
+      "icon": "drokpa",
+      "group": "group_2",
+      "requires": [
+        "senvm_ll_ig_lisboa"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": null,
+      "blocks": {
+        "visible": "",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "estremoz  [pottery]\n  Q  \"Red Clay and White Marble\": mason lvl >= 2 in estremoz AND vila_vicosa; bailiff in montemor\n  R  +5 dev, local_pottery_output_modifier = 0.20\n\nchaves  [cloth]\n  Q  \"Fleeces of Tras-os-Montes\": wool RGO >= 4 in chaves AND miranda_de_i_douro; bailiff in vila_real\n  R  +5 dev, local_cloth_output_modifier = 0.20\ncovilha  [fine_cloth]\n  Q  \"Serra da Estrela Wool\": wool RGO >= 5 in covilha; sheep_farms lvl >= 2 in guarda\n  R  +5 dev, local_fine_cloth_output_modifier = 0.20\nevora  [beer]\n  Q  \"Granary of the Alentejo\": wheat RGO >= 5 in avis AND elvas\n  R  +5 dev, local_beer_output_modifier = 0.20\n\nmertola  [jewelry]\n  Q  \"Copper of the Guadiana\": copper RGO >= 4 in mertola; bailiff in serpa\n  R  +5 dev, local_jewelry_output_modifier = 0.20\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_riches_of_the_land",
+      "name": "Riches of the Land",
+      "desc": "Fortunes of the Land",
+      "icon": "netherlandish_protoindustry",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ib_art_1"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission.\n",
+      "manual_index": 5,
+      "blocks": {
+        "visible": "For specifically aragon they can either pick iberia or rome path so theese need to hide when rome is picked\n",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "zaragoza  [books]\n  Q  \"Libraries of the Crown\": 10 libraries built in aragon_area;\n     printing press lvl >= 2 in zaragoza\n  R  local_books_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nhuesca  [cloth]\n  Q  \"Fleeces of the Pyrenees\": wool RGO size >= 4 in jaca, sos AND huesca\n  R  local_cloth_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nejea_de_los_caballeros  [beer]\n  Q  \"Granary of the Cinco Villas\": wheat RGO size >= 5 in ejea_de_los_caballeros\n     AND almudevar; windmill lvl >= 2 in ejea_de_los_caballeros\n  R  local_beer_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\ncalatayud  [firearms]\n  Q  \"The Lead of Calatayud\": lead RGO size >= 5 in calatayud;\n     bailiff in daroca\n  R  local_firearms_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nbarbastro  [tar]\n  Q  \"Pitch of the Sobrarbe\": tar_kiln lvl >= 2 in ainsa; bailiff in monzon\n  R  local_tar_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nteruel  [tools]\n  Q  \"Iron of Albarracin\": iron RGO size >= 4 in albarracin;\n     local_smelters lvl >= 2 in teruel\n  R  local_tools_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nalcaniz  [fine_cloth]\n  Q  \"Alum of the Maestrazgo\": alum RGO size >= 4 in alcaniz;\n     coal RGO size >= 4 in montalban\n  R  local_fine_cloth_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nseu_durgell  [leather]\n  Q  \"Herds of the High Valleys\": livestock RGO size >= 5 in andorra_la_vella;\n     bailiff in balaguer\n  R  local_leather_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nlleida  [jewelry]\n  Q  \"Goldsmiths of the Segre\": minting_office lvl >= 2 in lleida;\n     silver OR goods_gold available in lleida's market; bailiff in tarrega\n  R  local_jewelry_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nvic  [furniture]\n  Q  \"Woodwrights of Osona\": sawmill lvl >= 2 in vic; bailiff in berga\n  R  local_furniture_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_mission_74",
+      "name": "Riches of the Coast",
+      "desc": "",
+      "icon": "sardinian_the_industrial_transition",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ib_art_1"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "This group of missions will use a quest reward system that gives a local reward to some locations for completing a mission. Make sure that how this works is made clear in the mission reward section with the tick or cross icon showing if it is procing or not. Need at least half the quests to be true to get be able to pick the mission. For aragon the missions will increase the maximum development from the cabinet action by 1 instead of giving development now\n",
+      "manual_index": 5,
+      "blocks": {
+        "visible": "For specifically aragon they can either pick iberia or rome path so theese need to hide when rome is picked\n",
+        "enabled": "",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "barcelona  [cloth]\n  Q  \"Drapers of the Ribera\": cloth workshop lvl >= 3 in barcelona;\n     wool available in barcelona's market; bailiff in villafranca_del_penedes\n  R  local_cloth_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\ngirona  [weaponry]\n  Q  \"Forges of the Ter\": iron RGO size >= 4 in ripoll;\n     charcoal_maker lvl >= 2 in besalu\n  R  local_weaponry_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\ntarragona  [liquor]\n  Q  \"Wines of the Camp\": wine RGO size >= 4 in tarragona;\n     bailiff in montblanc\n  R  local_liquor_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nperpignan  [masonry]\n  Q  \"Stone of the Cerdanya\": stone RGO size >= 4 in puigcerda;\n     mason lvl >= 2 in prades\n  R  local_masonry_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nvalencia  [fine_cloth]\n  Q  \"Llotja de la Seda\": silk RGO size >= 5 in valencia;\n     alum RGO size >= 4 in bunol\n  R  local_fine_cloth_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nlliria  [porcelain]\n  Q  \"Kilns of the Turia\": clay RGO size >= 5 in lliria; bailiff in chelva\n  R  local_porcelain_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\njativa  [paper]\n  Q  \"The Paper Mills of Xativa\": fiber_crops RGO size >= 4 in denia;\n     sawmill lvl >= 2 in alcoy\n  R  local_paper_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\nalicante  [glass]\n  Q  \"Sands of the Vinalopo\": sand RGO size >= 4 in elche;\n     rural_glassmaker lvl >= 2 in alicante\n  R  local_glass_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n\ncastellon_de_la_plana  [cannons]\n  Q  \"Foundry of Peniscola\": iron RGO size >= 4 in peniscola;\n     bailiff in morella\n  R  local_cannons_output_modifier = 0.10\n     cabinet action max development +0.5  (req. senvm_ll_ib_arart)\n",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    },
+    {
+      "id": "senvm_ll_ib_arart",
+      "name": "Growth of a Nation",
+      "desc": "",
+      "icon": "lumber_improvements_discovery",
+      "group": "group_4",
+      "requires": [
+        "senvm_ll_ib_riches_of_the_land",
+        "senvm_ll_mission_74",
+        "senvm_ll_base_2"
+      ],
+      "duration_days": 0,
+      "final": false,
+      "notes": "Increases maximum development from the cabinet action and resets the counter again. Increaes the maxium development by a value decided by the mission before",
+      "manual_index": null,
+      "blocks": {
+        "visible": "For specifically aragon they can either pick iberia or rome path so theese need to hide when rome is picked\n",
+        "enabled": "Must have more tax base than at least 3 of the following\nportugal\nnaples\ncastile\nmorroco\nFrance\n",
+        "bypass": "",
+        "highlight": "",
+        "select_trigger": "",
+        "modifier_while_progressing": "",
+        "on_start": "",
+        "on_completion": "",
+        "on_persistent_completion": "",
+        "on_persistent_start": "",
+        "on_monthly": ""
+      }
+    }
+  ],
+  "exclusive_sets": [
+    {
+      "id": "excl_1",
+      "name": "Choice 1",
+      "pick": 1,
+      "members": [
+        "senvm_ll_pt_a_string_of_pearls",
+        "senvm_ll_pt_following_the_sun"
+      ]
+    },
+    {
+      "id": "excl_2",
+      "name": "Choice 2",
+      "pick": 1,
+      "members": [
+        "senvm_cs_inward_focus",
+        "senvm_ll_cs_a_southeren_outlook"
+      ]
+    },
+    {
+      "id": "excl_3",
+      "name": "Choice 3",
+      "pick": 1,
+      "members": [
+        "senvm_ll_cs_arstistic_santuary",
+        "senvm_ll_cs_native_cloth_industry"
+      ]
+    },
+    {
+      "id": "excl_5",
+      "name": "Choice 5",
+      "pick": 1,
+      "members": [
+        "senvm_ll_it_land_of_wealth",
+        "senvm_ll_it_professionalised_soldier"
+      ]
+    },
+    {
+      "id": "excl_6",
+      "name": "Choice 6",
+      "pick": 1,
+      "members": [
+        "senvm_ll_ln_redefining_heritage",
+        "senvm_ll_it_start",
+        "senvm_ll_ib_frontiers_of_iberia"
+      ]
+    }
+  ],
+  "hidden_groups": [
+    "group_2",
+    "group_3",
+    "group_6",
+    "group_7",
+    "group_8"
+  ]
+}
